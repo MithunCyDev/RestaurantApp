@@ -22,6 +22,7 @@ module.exports = {
       'luckypoint':'#2c2c54',
       'upperblue':'#474787',
       'green': '#9acd32',
+      'deepgreen':'#86b12f',
       'lightgreen': '#9dd970',
       'yellow': '#ffb142',
       'gray-dark': '#273444',
@@ -32,6 +33,7 @@ module.exports = {
       'red': '#ff5252',
       'redflower': '#e84118',
       'white': '#f5f6fa',
+      'deepwhite': '#eaeaea',
       'soda': '#7f8fa6',
     },
    
