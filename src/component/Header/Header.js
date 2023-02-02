@@ -1,10 +1,12 @@
 import React from 'react'
 import cyLogo from '../../Image/cylogoBlack.png';
 import {HiShoppingBag, HiUserCircle} from 'react-icons/hi'
+import { Motion } from 'framer-motion';
+
 export const Header = () => {
   return (
     <div>
-        <div className="flex w-full h-[90px] fixed top-0 left-0 z-[999] drop-shadow-sm shadow-white bg-white items-center px-[135px] justify-center font-[poppins]">
+        <div className="flex w-full h-[90px] fixed top-0 left-0 z-[999] drop-shadow-sm shadow-white bg-white items-center px-[70px] justify-center font-[poppins]">
           <div className="w-[110px] min-w-[70px]">
             <img src={cyLogo} alt="logo"></img>
           </div>
@@ -22,8 +24,8 @@ export const Header = () => {
             </div>
             {/* Icon and user section*/}
           <div className="relative">
-            <HiShoppingBag className="text-[25px] text-notblack cursor-pointer transition-all
-            duration-150 "></HiShoppingBag>
+            <HiShoppingBag whileTap={{scale: 0.6}} className="text-[25px] text-notblack cursor-pointer transition-all
+            duration-150 "/>
             <span className="absolute w-6 h-6 bg-green rounded-full text-white
             flex justify-center items-center -top-2.5 left-3.5">3</span>
           </div>
