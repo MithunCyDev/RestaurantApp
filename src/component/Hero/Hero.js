@@ -7,9 +7,9 @@ export const Hero = () => {
   return (
     <>
     {/* Hero section */}
-      <div className="w-full h-full p-24 bg-white font-[poppins] flex justify-between ">
+      <div className="w-full h-full p-[70px] py-[150px] bg-white font-[poppins] flex justify-between ">
       <img className="w-full h-auto fixed object-contain opacity-80" src={foodImage} alt="this is img"></img>
-          <div className="flex flex-col justify-center flex-warp z-20 px-10 py-12 pt-24">
+          <div className="flex flex-col justify-center flex-warp z-20 pt-24">
               <h1 className="text-[80px] font-bold text-green">Order Tasty &</h1>
               <span className="text-notblack text-[115px] font-extrabold tracking-wide">Fresh Food</span>
               <span className="text-notblack  text-[60px] mb-4 font-bold ">Anytime</span>
