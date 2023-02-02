@@ -7,11 +7,11 @@ import { MenuSection } from './component/MenuSection/MenuSection';
 function App() {
   return (
     <>
-    <AnimatePresence>
+    
       <Header></Header>
       <Hero></Hero>
       <MenuSection></MenuSection>
-    </AnimatePresence>
+    
     </>
   );
 }

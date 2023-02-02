@@ -1,7 +1,7 @@
 import React from 'react'
 import cyLogo from '../../Image/cylogoBlack.png';
 import {HiShoppingBag, HiUserCircle} from 'react-icons/hi'
-import { Motion } from 'framer-motion';
+import { motion } from "framer-motion"
 
 export const Header = () => {
   return (
@@ -24,14 +24,17 @@ export const Header = () => {
             </div>
             {/* Icon and user section*/}
           <div className="relative">
-            <HiShoppingBag whileTap={{scale: 0.6}} className="text-[25px] text-notblack cursor-pointer transition-all
+            <HiShoppingBag className="text-[25px] text-notblack cursor-pointer transition-all
             duration-150 "/>
             <span className="absolute w-6 h-6 bg-green rounded-full text-white
             flex justify-center items-center -top-2.5 left-3.5">3</span>
           </div>
           <div>
-          <HiUserCircle className="w-[35px] h-[35px] text-green ml-20 cursor-pointer
-          hover:text-notblack"></HiUserCircle>
+          <HiUserCircle
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="w-[35px] h-[35px] text-green ml-20 cursor-pointer
+          hover:text-notblack"/>
           </div>
         </div>
         
