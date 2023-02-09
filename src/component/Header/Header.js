@@ -23,7 +23,7 @@ export const Header = () => {
         sm:justify-between  font-[poppins]">
 
           <div className="">
-            <img className="sm:w-20 lg:w-24" src={cyLogo} alt="logo"></img>
+            <img className="sm:w-16 lg:w-24" src={cyLogo} alt="logo"></img>
           </div>
             <div className="mx-auto lg:block md:hidden sm:hidden">
               <ul className="flex items-center justify-center gap-[60px]">
@@ -38,9 +38,9 @@ export const Header = () => {
               </ul>
             </div>
             {/* Icon and user section*/}
-          <div className="relative">
+          <div className="relative sm:ml-12">
             <HiShoppingBag className="text-[25px] text-white cursor-pointer transition-all
-            duration-150 "/>
+            duration-150"/>
             <span className="absolute w-6 h-6 bg-green rounded-full text-white
             flex justify-center items-center -top-2.5 left-3.5">3</span>
           </div>
