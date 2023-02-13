@@ -1,4 +1,5 @@
 import { AnimatePresence } from 'framer-motion';
+import { Router, Routes } from 'react-router-dom';
 import './App.css';
 import { Header } from './component/Header/Header';
 import { Hero } from './component/Hero/Hero';
@@ -9,8 +10,10 @@ function App() {
     <>
     
       <Header></Header>
-      <Hero></Hero>
-      <MenuSection></MenuSection>
+      
+        <Hero></Hero>
+        <MenuSection></MenuSection>
+      
     
     </>
   );
