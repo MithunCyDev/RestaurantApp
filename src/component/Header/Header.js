@@ -1,18 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import cyLogo from '../../Image/cylogo.png'
-import {HiShoppingBag, HiUserCircle} from 'react-icons/hi'
+import avatar from '../../Image/avatar.png';
+import {HiShoppingBag} from 'react-icons/hi'
 import { motion } from "framer-motion"
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import {app} from '../../firebase.config';
+import { actionType } from '../../Context/Reducer';
+import {useStateValue} from '../../Context/StateProvider';
 
 
 export const Header = () => {
-  // Google Auth
+  // Google Auth provider
   const firebaseAuth = getAuth(app)
   const provider = new GoogleAuthProvider();
+
+  const [ {user}, dispatch] = useStateValue()
+
   const login = async ()=>{
-    const response = await signInWithPopup(firebaseAuth, provider);
-    console.log(response);
+    const {user: {refreshToken, providerData}} = await signInWithPopup(firebaseAuth, provider);
+    dispatch({
+      type : actionType.SET_USER,
+      user : providerData[0],
+    })
+    localStorage.setItem("user", JSON.stringify(providerData[0]));
     }
    
 
@@ -27,30 +37,27 @@ export const Header = () => {
           </div>
             <div className="mx-auto lg:block md:hidden sm:hidden">
               <ul className="flex items-center justify-center gap-[60px]">
-                <li className="text-green font-semibold cursor-pointer transition-all duration-75
-                hover:text-green">Home</li>
-                <li className="text-white font-semibold cursor-pointer transition-all duration-75
-                hover:text-green">About Us</li>
-                <li className="text-white font-semibold cursor-pointer transition-all duration-75
-                hover:text-green">Orders</li>
-                <li className="text-white font-semibold cursor-pointer transition-all duration-75
-                hover:text-green">Contact</li>
+                <motion.li whileTap={{ scale: 0.9 }} className="text-green font-semibold cursor-pointer transition-all duration-75
+                hover:text-green">Home</motion.li>
+                <motion.li whileTap={{ scale: 0.9 }} className="text-white font-semibold cursor-pointer transition-all duration-75
+                hover:text-green">About Us</motion.li>
+                <motion.li whileTap={{ scale: 0.9 }} className="text-white font-semibold cursor-pointer transition-all duration-75
+                hover:text-green">Orders</motion.li>
+                <motion.li whileTap={{ scale: 0.9 }} className="text-white font-semibold cursor-pointer transition-all duration-75
+                hover:text-green">Contact</motion.li>
               </ul>
             </div>
             {/* Icon and user section*/}
-          <div className="relative sm:ml-12">
+          <motion.div whileTap={{ scale: 0.9 }} className="relative sm:ml-12">
             <HiShoppingBag className="text-[25px] text-white cursor-pointer transition-all
             duration-150"/>
             <span className="absolute w-6 h-6 bg-green rounded-full text-white
             flex justify-center items-center -top-2.5 left-3.5">3</span>
-          </div>
-          <div>
-          <HiUserCircle
-          onClick={login}
-          className="w-[35px] h-[35px] text-green ml-20 cursor-pointer
-          hover:text-notblack"/>
-         
-          </div>
+          </motion.div>
+          <motion.div whileTap={{ scale: 0.9 }}>
+          <img className="w-[35px] h-[35px] text-green ml-16 cursor-pointer rounded-full" 
+          onClick={login} src={user? user.photoURL : avatar } alt="profile"/>
+          </motion.div>
         </div>
         
     </div>
