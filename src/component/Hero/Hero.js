@@ -7,8 +7,6 @@ import foodbg from '../../Image/v.png'
 import { motion, useTime, useTransform} from "framer-motion"
 
 
-
-
 export const Hero = () => {
   const time = useTime();
   const rotate = useTransform(time, [0, 40000], [0, 360], { clamp: false });
@@ -31,7 +29,7 @@ export const Hero = () => {
           </div>
           
           {/* Image Section  */}
-         <div className="flex flex-col lg:gap-10 md:gap-10 sm:gap-4 sm:px-[5px] sm:py-[50px] lg:my-[110px] z-10">
+         <div className="flex flex-col lg:gap-10 md:gap-10 sm:gap-4 sm:px-[5px] sm:py-[50px] lg:my-[98px] z-10">
             <div className="flex lg:gap-10 sm:gap-4 md:gap-10">
               <motion.img style={{ rotate }} className="lg:w-[300px] md:w-[220px] sm:w-[140px] h-auto object-contain " src={foodImage1} alt="this is img"></motion.img>
               <motion.img style={{ rotate }} className="lg:w-[300px] md:w-[220px] sm:w-[140px] h-auto object-contain " src={foodImage2} alt="this is img"></motion.img>
