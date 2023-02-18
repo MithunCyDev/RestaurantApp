@@ -1,5 +1,4 @@
 import cyLogo from '../../Image/cylogo.png'
-import avatar from '../../Image/avatar.png';
 import {HiShoppingBag} from 'react-icons/hi'
 import { IoIosAdd, IoIosLogOut } from 'react-icons/io'
 import { motion } from "framer-motion"

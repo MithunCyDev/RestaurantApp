@@ -4,7 +4,9 @@ import './App.css';
 import { CreateItems } from './component/CreateItems/CreateItems';
 import { Header } from './component/Header/Header';
 import { Hero } from './component/Hero/Hero';
+import { Order } from './component/Order/Order';
 import { MenuSection } from './component/MenuSection/MenuSection';
+import { PrivetOutlet} from './component/PrivetOutlet';
 
 function App() {
   return (
@@ -13,7 +15,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Hero/>}/>
           <Route path='/home' element={<Hero/>}/>
-          <Route path='createitems' element={<CreateItems/>}/>
+          <Route path='/createitems' element={<CreateItems/>}/>
+          <Route path='/order' element={<Order></Order>}/>
         </Routes>
     </>
   );
