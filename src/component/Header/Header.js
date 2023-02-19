@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import cyLogo from '../../Image/cylogo.png'
 import {HiShoppingBag} from 'react-icons/hi'
 import { IoIosAdd, IoIosLogOut } from 'react-icons/io'
@@ -7,7 +8,6 @@ import {app} from '../../firebase.config';
 import { actionType } from '../../Context/Reducer';
 import {useStateValue} from '../../Context/StateProvider';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 
 
 export const Header = () => {
@@ -55,29 +55,29 @@ export const Header = () => {
             <div className="mx-auto lg:block md:hidden sm:hidden">
               <ul className="flex items-center justify-center gap-[60px] ml-20">
                 <Link to='/home'>
-                  <motion.li whileTap={{ scale: 0.9 }} className="text-green font-semibold cursor-pointer transition-all duration-75
+                  <motion.li whileTap={{ scale: 0.7 }} className="text-green font-semibold cursor-pointer transition-all duration-75
                   hover:text-green">Home
                   </motion.li>
                 </Link>
                 <Link to='/about'>
-                  <motion.li whileTap={{ scale: 0.9 }} className="text-white font-semibold cursor-pointer transition-all duration-75
+                  <motion.li whileTap={{ scale: 0.7 }} className="text-white font-semibold cursor-pointer transition-all duration-75
                   hover:text-green">About Us
                   </motion.li>
                 </Link>
                 <Link to='/order'>
-                  <motion.li whileTap={{ scale: 0.9 }} className="text-white font-semibold cursor-pointer transition-all duration-75
+                  <motion.li whileTap={{ scale: 0.7 }} className="text-white font-semibold cursor-pointer transition-all duration-75
                   hover:text-green">Orders
                   </motion.li>
                 </Link>
                 <Link to='/contact'>
-                  <motion.li whileTap={{ scale: 0.9 }} className="text-white font-semibold cursor-pointer transition-all duration-75
+                  <motion.li whileTap={{ scale: 0.7 }} className="text-white font-semibold cursor-pointer transition-all duration-75
                 hover:text-green">Contact
                   </motion.li>
                 </Link>
               </ul>
             </div>
             {/* Icon and user section*/}
-          <motion.div whileTap={{ scale: 0.9 }} className="relative sm:ml-12">
+          <motion.div whileTap={{ scale: 0.7 }} className="relative sm:ml-20">
             <HiShoppingBag className="text-[25px] text-white cursor-pointer transition-all
             duration-150"/>
             <span className="absolute w-6 h-6 bg-green rounded-full text-white
@@ -85,7 +85,7 @@ export const Header = () => {
           </motion.div>
           <div className="w-24 ml-12" onClick={login}  >
             {user? <motion.img 
-            whileTap={{ scale: 0.9 }} 
+            whileTap={{ scale: 0.7 }} 
             className="relative w-[35px] h-[35px] ml-12 cursor-pointer rounded-full" 
             src={ user.photoURL } alt="profile"/>
              : <motion.button whileTap={{ scale: 0.9 }}
