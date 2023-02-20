@@ -5,7 +5,8 @@ import { items } from '../MenuSection/Menuitems'
 import { Loader } from './Loader'
 import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import {storage} from '../../firebase.config'
-
+import saveItem from '../../Utils/FirebaseFunction';
+import { motion } from 'framer-motion'
 
 export const CreateItems = () => {
   const [errorMessage, setErrorMessage] = useState(null)
@@ -68,7 +69,54 @@ export const CreateItems = () => {
     })
   }
 
-  const addImage = ()=>{
+  const saveDetails = ()=>{
+        setLoading(true);
+        try{
+          if(!Name || !imageAsset || !price || !category){
+            setField(true);
+            setErrorMessage("Required fields can't be empty");
+            setAlart(false);
+            setLoading(false);
+            setTimeout(()=>{
+              setField(false);
+            },4000);
+          }else{
+            const data={
+              id : `${Date.now()}`,
+              title : Name,
+              imageURL : imageAsset,
+              category : category,
+              qty : 1,
+              price : price,
+            }
+            saveItem(data)
+            setLoading(false)
+            setField(true);
+            setErrorMessage("Data Update Successfully");
+            setAlart(true);
+            //Call Clear Function
+            clearField()
+            setTimeout(()=>{
+            setField(false)
+            },4000)
+          }
+        } catch(error){
+            console.log(error)
+            setField(true);
+            setErrorMessage("Error While Uploading, Try Again");
+            setAlart(false);
+            setTimeout(()=>{
+            setField(false);
+            setLoading(false);
+          },4000);
+        }
+  }
+//Clear All Input field
+  const clearField = ()=>{
+    setImageAsset(null)
+    setCategory("");
+    setName("");
+    setPrice("");
     
   }
 
@@ -86,7 +134,7 @@ export const CreateItems = () => {
         )}
 
         <div className="w-full flex justify-center items-center">
-          <input type="text" placeholder='Give me a name'
+          <input type="text" required placeholder='Give me a name'
           className="outline-none relative w-full py-2 px-11 bg-notblack text-white rounded-md font-semibold"
           value={Name}
           onChange={(e)=> setName(e.target.value)}
@@ -121,8 +169,9 @@ export const CreateItems = () => {
               </label>):
               // Image section
               <div className=" w-full relative flex justify-center items-center ">
-                <img src={imageAsset} alt='uploadImage' className=" object-contain overflow-hidden h-[150px] w-[160px] mx-auto"/>
-                <button className="py-3 px-3 bg-red absolute rounded-full z-20 lg:top-[150px] sm:top-[110px] lg:right-20 sm:right-6" >
+                <img src={imageAsset} alt='uploadImage' className=" object-contain overflow-hidden lg:h-[190px] lg:w-auto sm:h-[150px] sm:w-[160px] mx-auto"/>
+                <button
+                className="py-3 px-3 bg-red absolute rounded-full z-20 hover:bg-redflower lg:top-[150px] sm:top-[110px] lg:right-20 sm:right-6" >
                   <MdDelete 
                   onClick={deleteImage}
                   className="text-white text-xl"/>
@@ -134,13 +183,13 @@ export const CreateItems = () => {
         </div> 
         {/* Select items Section */}
           <select 
+          onChange={(e)=> setCategory(e.target.value)}
            className="w-full bg-notblack py-2 px-4 outline-none text-gray rounded-md font-semibold transition-all duration-150">
             <option value='other'>Select Category</option>
             {/* Map on all Items */}
             {items.map((item)=> ( <option 
             key={item.id}
             value={item.useParamName}
-            onChange={(e)=> setCategory(e.target.value)}
             className="bg-notblack text-gray font-medium hover:bg-black"
             >{item.name} </option>))}
           </select>
@@ -153,9 +202,11 @@ export const CreateItems = () => {
             <BsCurrencyDollar
             className="text-gray text-md absolute flex mt-3 items-center mx-4"
             />
-            <button 
-            onClick={addImage}
-            className=" transition-all duration-150 bg-green text-white px-14 py-2  rounded-md hover:bg-notblack">Add</button>
+            <motion.button 
+            whileTap={{ scale: 0.9 }}
+            onClick={saveDetails}
+            className=" bg-green text-white px-14 py-2  rounded-md">Add
+            </motion.button>
           </div>
           
       </div>
