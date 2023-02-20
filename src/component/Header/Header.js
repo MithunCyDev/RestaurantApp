@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import cyLogo from '../../Image/cylogo.png'
 import {HiShoppingBag} from 'react-icons/hi'
+import {FaUserCircle} from 'react-icons/fa'
 import { IoIosAdd, IoIosLogOut } from 'react-icons/io'
 import { motion } from "framer-motion"
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
@@ -44,7 +45,7 @@ export const Header = () => {
   return (
     <div>
         <div className="flex w-full h-[90px] fixed top-0 left-0 z-[999] drop-shadow-sm 
-        shadow-white bg-black opacity-90 items-center sm:px-[30px] lg:px-[70px] justify-center  md:justify-between 
+        shadow-white bg-black bg-opacity-90 items-center sm:px-[30px] lg:px-[70px] justify-center  md:justify-between 
         sm:justify-between  font-[poppins]">
 
           <div className="">
@@ -89,28 +90,32 @@ export const Header = () => {
             className="relative w-[35px] h-[35px] ml-12 cursor-pointer rounded-full" 
             src={ user.photoURL } alt="profile"/>
              : <motion.button whileTap={{ scale: 0.9 }}
-             className="py-2 px-6 bg-green text-white font-medium rounded-md">
+             className="lg:py-2 lg:px-6 sm:py-1 sm:px-3 sm:ml-3 bg-green text-white font-medium rounded-md">
               SignIn</motion.button> }
-            
-            {/* <p className="absolute text-white font-medium ml-12 mt-1 text-[13px]">{user.displayName}</p> */}
 
-            {/* Set menu and verify admin email */}
             {Menu &&  (
                 <motion.div 
                 initial={{ opacity:0, scale: 0.6 }}
                 animate={{ opacity:1, scale: 1 }}
                 exit={{ opacity:0, scale: 0.6 }}
-                className="bg-notblack absolute flex flex-col mt-6 -ml-[55px] justify-center rounded-md">
+                className="bg-notblack absolute flex flex-col w-[190px] mt-6 -ml-[105px] justify-center">
                 {user && user.email === 'rajcy1@gmail.com' && (
                     <Link to='/createitems'>
                       {/* New Items add section */}
                     <motion.p whileTap={{ scale: 0.9 }} 
                       onClick={ ()=> setMenu(false)} 
-                      className="flex text-white text-[14px] font-semibold px-10 py-2 cursor-pointer bg-green transition-all duration-100">Items
+                      className="flex text-white text-[14px] font-semibold px-4 py-2 cursor-pointer bg-green transition-all duration-100">Items
                       <IoIosAdd className="text-white text-[20px] ml-1 " />
                     </motion.p>
                     </Link>
                 )}
+                {/* User and Admin Name display */}
+                <p className="py-2 flex items-center text-green pl-4 font-medium bg-black text-lg">
+                  <FaUserCircle/>
+                  {user.email === "rajcy1@gmail.com" ?
+                ( <p className="text-sm ml-1">Admin<span className="text-white">({user.displayName})</span></p> ) 
+                : <p className="text-[17px] ml-2 "> {user.displayName} </p>} </p>
+
                 {/* Mobile menu */}
                 <ul className="flex flex-col justify-center lg:hidden ">
                   <Link to='/home'>
@@ -137,7 +142,7 @@ export const Header = () => {
 
                 <motion.p whileTap={{ scale: 0.9 }} 
                 onClick={logOut}
-                className="flex  text-white text-[14px] font-semibold px-10 py-2 cursor-pointer bg-black  transition-all duration-100">LogOut
+                className="flex  text-white text-[14px] font-semibold px-4 py-2 cursor-pointer bg-gray-dark  transition-all duration-100">Sign Out
                   <IoIosLogOut className="text-white text-[19px] ml-1" />
                 </motion.p>
               </motion.div>

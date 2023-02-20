@@ -21,7 +21,6 @@ export const CreateItems = () => {
   const uploadImage = (e)=>{
     setLoading(true)
     const imageUpload = e.target.files[0];
-    console.log(imageUpload)
     const storageRef = ref(storage, `Images/${Date.now()}-${imageUpload.name}`)
     const uploadTask = uploadBytesResumable(storageRef, imageUpload);
 

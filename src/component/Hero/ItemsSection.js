@@ -7,39 +7,41 @@ import {GiChickenOven} from 'react-icons/gi'
 
 export const ItemsSection = () => {
   return (
-      <div className="flex items-center justify-center pb-4 mt-2 gap-20">
-        <div className="backdrop-blur-md text-white flex justify-center items-center w-64 h-28 
-        rounded-lg drop-shadow-md border-r-2 border-l-2 border-green ">
-            <div className="py-6 px-6 bg-green rounded-full">
-            <FaHamburger className="text-[30px]" />
+    <div className="w-full">
+      <div className="flex flex-wrap items-center justify-center pb-4 mt-2 lg:gap-20 sm:gap-10">
+        <div className="backdrop-blur-md  text-white flex justify-center items-center p-2 sm:w-32 sm:h-12 lg:w-72 lg:h-28 
+            rounded-lg drop-shadow-md border-r-2 border-l-2 border-green ">
+            <div className="lg:py-4 lg:px-4 sm:py-1 sm:px-1 bg-green rounded-full">
+            <FaHamburger className="lg:text-[30px] sm:text-[15px]" />
             </div>
-          <p className="font-semibold ml-6">Fast Food</p>
+          <p className="font-semibold lg:text-[16px] sm:text-[12px] lg:ml-6 sm:ml-2">Fast Food</p>
         </div>
 
-        <div className="backdrop-blur-md text-white flex justify-center items-center w-60 h-28 
+        <div className="backdrop-blur-md text-white flex justify-center items-center  p-2 sm:w-32 sm:h-12 lg:w-72 lg:h-28  
         rounded-lg drop-shadow-md border-r-2 border-l-2 border-green ">
-            <div className="py-6 px-6 bg-green rounded-full">
-            <GiFullPizza className="text-[30px]" />
+            <div className="lg:py-4 lg:px-4 sm:py-1 sm:px-1 bg-green rounded-full">
+            <GiFullPizza className="lg:text-[30px] sm:text-[15px]" />
             </div>
-          <p className="font-semibold ml-6">Hor Pizza</p>
+          <p className="font-semibold lg:text-[16px] sm:text-[12px] lg:ml-6 sm:ml-2">Hor Pizza</p>
         </div>
 
-        <div className="backdrop-blur-md text-white flex justify-center items-center w-60 h-28 
+        <div className="backdrop-blur-md text-white flex justify-center items-center  p-2 sm:w-32 sm:h-12 lg:w-72 lg:h-28 
         rounded-lg drop-shadow-md border-r-2 border-l-2 border-green ">
-            <div className="py-6 px-6 bg-green rounded-full">
-            <CiIceCream className="text-[30px]" />
+            <div className="lg:py-4 lg:px-4 sm:py-1 sm:px-1 bg-green rounded-full">
+            <CiIceCream className="lg:text-[30px] sm:text-[15px]" />
             </div>
-          <p className="font-semibold ml-6">Ice Cream</p>
+          <p className="font-semibold lg:text-[16px] sm:text-[12px] lg:ml-6 sm:ml-2">Ice Cream</p>
         </div>
 
-        <div className="backdrop-blur-md text-white flex justify-center items-center w-60 h-28 
+        <div className="backdrop-blur-md text-white flex justify-center items-center  p-2 sm:w-32 sm:h-12 lg:w-72 lg:h-28 
         rounded-lg drop-shadow-md border-r-2 border-l-2 border-green ">
-            <div className="py-6 px-6 bg-green rounded-full">
-            <GiChickenOven className="text-[30px]" />
+            <div className="lg:py-4 lg:px-4 sm:py-1 sm:px-1 bg-green rounded-full">
+            <GiChickenOven className="lg:text-[30px] sm:text-[15px]" />
             </div>
-          <p className="font-semibold ml-6">Chicken</p>
+          <p className="font-semibold lg:text-[16px] sm:text-[12px] lg:ml-6 sm:ml-2">Chicken</p>
         </div>
       </div>
+    </div>
     
   )
 }

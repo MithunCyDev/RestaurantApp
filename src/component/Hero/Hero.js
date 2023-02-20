@@ -19,7 +19,10 @@ export const Hero = () => {
     {/* Hero section text */}
       <div className=" lg:flex-row md:flex-col sm:flex-col flex lg:justify-between relative  ">
           <div className="flex flex-col justify-center flex-warp z-20 sm:mt-[120px] lg:my-[120px]">
-              
+              {/* <div className="bg-notblack w-32 h-10 py-2 rounded-full relative flex">
+                <p>fast delivery</p>
+              <img src={deliver} alt='deliver' className="w-16 h-auto absolute ml-4"/>
+              </div> */}
               <h2 className="lg:text-[80px] md:text-[40px] sm:text-[30px] lg:-mb-4 sm:-mt-2 font-bold text-green">Order Tasty &</h2>
               <motion.h1  
                className="text-white lg:text-[110px] md:text-[90px] sm:text-[55px] font-extrabold">Fresh Food</motion.h1>
