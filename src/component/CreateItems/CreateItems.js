@@ -22,6 +22,7 @@ export const CreateItems = () => {
   const uploadImage = (e)=>{
     setLoading(true)
     const imageUpload = e.target.files[0];
+    console.log(imageUpload)
     const storageRef = ref(storage, `Images/${Date.now()}-${imageUpload.name}`)
     const uploadTask = uploadBytesResumable(storageRef, imageUpload);
 
@@ -117,7 +118,6 @@ export const CreateItems = () => {
     setCategory("");
     setName("");
     setPrice("");
-    
   }
 
   return (
@@ -143,27 +143,28 @@ export const CreateItems = () => {
         </div>
 
         {/* Upload Section */}
-        <div class="flex group items-center justify-center rounded-md bg-notblack w-full sm:h-[250px] lg:h-[350px]  ">
+        <div className="flex group items-center justify-center rounded-md bg-notblack w-full sm:h-[250px] lg:h-[350px]  ">
             {loading? <Loader className="text-[50px] "/> : <>
               {!imageAsset ? 
               (
-                <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-[250px] bg-notblack text-white rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                  <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" 
+                <label className="flex flex-col items-center justify-center w-full h-[250px]
+                 bg-notblack text-white rounded-lg cursor-pointer">
+                <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                  <svg aria-hidden="true" className="w-10 h-10 mb-3 text-gray" 
                   fill="none" stroke="currentColor" viewBox="0 0 24 24" 
-                  xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" 
-                  stroke-linejoin="round" stroke-width="2" 
+                  xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" 
+                  strokeLinejoin="round" strokeWidth="2" 
                   d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
                   </svg>
-                  <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                    <span class="font-semibold">Click to upload</span> or drag and drop
+                  <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                    <span className="font-semibold text-lg text-gray">Click to upload</span>
                   </p>
-                  <p class="text-xs text-gray-500 dark:text-gray-400">PNG, JPG or GIF</p>
+                  <p className="text-xs text-gray dark:text-gray-400">PNG, JPG or GIF</p>
                 </div>
                   <input 
                   id="dropzone-file" 
                   type="file" accept='image/*' 
-                  class="hidden" 
+                  className="hidden" 
                   onChange={uploadImage}
                   />
               </label>):
