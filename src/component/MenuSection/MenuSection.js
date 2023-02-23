@@ -19,9 +19,9 @@ export const MenuSection = () => {
         {/* Arrow Icon Section */}
         <div className="flex gap-4 sm:mt-20 lg:mt-0">
           <MdOutlineArrowForwardIos className="text-white bg-green w-10 h-8 py-2 px-2 rounded-md
-          hover:bg-notblack transition-all duration-150"/>
+          hover:bg-notblack transition-all duration-100 cursor-pointer"/>
           <MdOutlineArrowForwardIos className="rotate-180 text-white bg-green w-10 h-8 py-2 px-2 rounded-md
-          hover:bg-notblack transition-all duration-150"/>
+          hover:bg-notblack transition-all duration-100 cursor-pointer"/>
         </div>
       </div>
 
