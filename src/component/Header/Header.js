@@ -35,7 +35,7 @@ export const Header = () => {
         
       }
     }
-   
+   // LogOut Function
     const logOut = ()=>{
       setMenu(false)
       localStorage.clear()
@@ -46,7 +46,7 @@ export const Header = () => {
       })
     }
 
-    // If no user in CreateItem section then back home
+    // If no user in CreateItem section then back home page
     const navigate = useNavigate()
     const handleBack = (user) => {
       if(user === true){
@@ -54,11 +54,10 @@ export const Header = () => {
       }else{
         navigate(-1);
       }
-      
     };
   return (
     <div>
-        <div className="flex w-full h-[90px] fixed top-0 left-0 z-[999] drop-shadow-sm 
+        <div className="flex w-full lg:h-[90px] sm:h-[65px] fixed top-0 left-0 z-[999] drop-shadow-sm 
         shadow-white bg-black bg-opacity-90 items-center sm:px-[30px] lg:px-[70px] justify-center  md:justify-between 
         sm:justify-between  font-[poppins]">
 
@@ -160,13 +159,13 @@ export const Header = () => {
                   </Link>
                 </ul>
                 {/* Sign Out Section */}
-                  <div onClick={handleBack} >
-                <motion.p whileTap={{ scale: 0.9 }} 
-                onClick={logOut}
-                className="flex rounded-b-lg text-white text-[14px] font-semibold px-4 py-2 cursor-pointer bg-gray-dark">
-                  Sign Out
-                  <IoIosLogOut  className="text-red text-[19px] ml-2" />
-                </motion.p>
+                <div onClick={handleBack} >
+                  <motion.p whileTap={{ scale: 0.9 }} 
+                  onClick={logOut}
+                  className="flex rounded-b-lg text-white text-[14px] font-semibold px-4 py-2 cursor-pointer bg-gray-dark">
+                    Sign Out
+                    <IoIosLogOut className="text-red text-[19px] ml-2" />
+                  </motion.p>
                 </div>
               </motion.div>
               )}

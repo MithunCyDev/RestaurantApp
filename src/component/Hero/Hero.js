@@ -8,6 +8,7 @@ import deliver from '../../Image/deliver.png'
 import {TbTruckDelivery} from 'react-icons/tb'
 import { motion, useTime, useTransform} from "framer-motion"
 import { ItemsSection } from './ItemsSection'
+import { MenuSection } from '../MenuSection/MenuSection'
 
 
 export const Hero = () => {
@@ -46,6 +47,7 @@ export const Hero = () => {
          <img className="fixed w-[1000px] h-auto mx-auto opacity-20 object-scale-down " src={foodbg} alt="background"></img>
       </div>
       <ItemsSection></ItemsSection>
+      <MenuSection></MenuSection>
     </div>
   )
 }
