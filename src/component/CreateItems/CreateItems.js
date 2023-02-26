@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useStateValue } from '../../Context/StateProvider'
+import { actionType } from '../../Context/Reducer'
+import {saveItem, getAllFoodItems } from '../../Utils/FirebaseFunction';
 import { MdOutlineFastfood, MdDelete } from 'react-icons/md'
 import { BsCurrencyDollar } from 'react-icons/bs'
 import { items } from '../MenuSection/Menuitems'
 import { Loader } from './Loader'
 import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import {storage} from '../../firebase.config'
-import saveItem from '../../Utils/FirebaseFunction';
 import { motion } from 'framer-motion'
 
 export const CreateItems = () => {
@@ -18,6 +20,7 @@ export const CreateItems = () => {
   const [ price, setPrice] = useState("")
   const [imageAsset, setImageAsset] = useState(null)
   const [category, setCategory] = useState(null)
+  const [{foodItems}, dispatch] = useStateValue();
 
   const uploadImage = (e)=>{
     setLoading(true)
@@ -111,14 +114,25 @@ export const CreateItems = () => {
             setLoading(false);
           },4000);
         }
-  }
+        fetchData();
+  };
 //Clear All Input field
   const clearField = ()=>{
     setImageAsset(null)
     setCategory("");
     setName("");
     setPrice("");
-  }
+  };
+
+  //fetch data from firebase database
+  const fetchData = async ()=>{
+    await getAllFoodItems().then((data)=>{
+      dispatch({
+        type: actionType.SET_FOOD_ITEMS,
+        foodItems: data,
+      });
+    });
+  };
 
   return (
     <div className="w-full h-screen bg-notblack flex flex-col justify-center items-center">

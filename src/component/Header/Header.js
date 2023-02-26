@@ -15,6 +15,13 @@ import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
 
+  //Header Scrollbar function
+  const [isScrolled, setIsScrolled] = useState(false)
+  window.onscroll = ()=>{
+    setIsScrolled(window.pageYOffset === 0 ? false : true);
+    return ()=> (window.onscroll = null);
+  };
+
   const [Menu, setMenu] = useState(false)
   // Google Auth provider
   const firebaseAuth = getAuth(app)
@@ -57,9 +64,9 @@ export const Header = () => {
     };
   return (
     <div>
-        <div className="flex w-full lg:h-[90px] sm:h-[65px] fixed top-0 left-0 z-[999] drop-shadow-sm 
-        shadow-white bg-black bg-opacity-90 items-center sm:px-[30px] lg:px-[70px] justify-center  md:justify-between 
-        sm:justify-between  font-[poppins]">
+        <div className={`flex w-full lg:h-[90px] sm:h-[70px] fixed top-0 left-0 z-[999] drop-shadow-sm 
+        shadow-white ${ isScrolled? "bg-black" : ""} bg-opacity-90 items-center sm:px-[30px] lg:px-[70px] justify-center  md:justify-between 
+        sm:justify-between font-[poppins]`}>
 
           <div className="">
             <Link to='/'>
