@@ -1,5 +1,9 @@
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 500px) {
     .scroll {
       overflow-x: scroll;
     }
   }
+/* 
+  .shadow{
+    box-shadow: 1px 1px 10px 0px #7f8fa6;
+  } */

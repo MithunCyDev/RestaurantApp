@@ -9,6 +9,7 @@ import {TbTruckDelivery} from 'react-icons/tb'
 import { motion, useTime, useTransform} from "framer-motion"
 import { ItemsSection } from './ItemsSection'
 import { MenuSection } from '../MenuSection/MenuSection'
+import { Footer } from '../Footer/Footer'
 
 
 export const Hero = () => {
@@ -16,9 +17,10 @@ export const Hero = () => {
   const rotate = useTransform(time, [0, 40000], [0, 360], { clamp: false });
   return (
     <div className=" w-full h-full bg-black font-[poppins]  ">
+    <div className="">
       
     {/* Hero section text */}
-      <div className="sm:px-[30px] lg:px-[70px] lg:flex-row md:flex-col sm:flex-col flex lg:justify-between relative  ">
+      <div className=" lg:flex-row md:flex-col sm:flex-col flex lg:justify-between relative sm:px-[20px] lg:px-[70px] ">
           <div className="flex flex-col justify-center flex-warp z-20 sm:mt-[120px] lg:my-[120px]">
               <h2 className="lg:text-[80px] md:text-[40px] sm:text-[30px] lg:-mb-4 sm:-mt-2 font-bold text-green">Order Tasty &</h2>
               <motion.h1  
@@ -44,10 +46,12 @@ export const Hero = () => {
               <motion.img style={{ rotate }} className="lg:w-[300px] md:w-[220px] sm:w-[140px] h-auto object-contain " src={foodImage4} alt="this is img"></motion.img>
             </div>
          </div>
-         <img className="fixed lg:w-[1000px] lg:h-auto sm:w-[500px] mx-auto opacity-20 object-scale-down " src={foodbg} alt="background"></img>
+         <img className="fixed lg:w-[1000px] lg:h-auto sm:w-[500px] mx-auto opacity-20 object-scale-down " src={foodbg} alt="background"/>
       </div>
       <ItemsSection/>
       <MenuSection/>
+      <Footer></Footer>
+    </div>
     </div>
   )
 };

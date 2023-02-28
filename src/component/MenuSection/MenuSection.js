@@ -5,6 +5,8 @@ import { motion } from 'framer-motion'
 import { useStateValue } from '../../Context/StateProvider'
 import {FoodCart} from './FoodCart'
 import { useRef } from 'react'
+import { Menu } from './Menu'
+import { FoodDelivery } from '../FoodDelivery/FoodDelivery'
 
 
 
@@ -22,23 +24,23 @@ export const MenuSection = () => {
     if(direction === "left" && slideNumber > 0){
       setSlideNumber(slideNumber - 1)
       
-      listRef.current.style.transform = `translateX(${170 + distance}px)`
+      listRef.current.style.transform = `translateX(${193 + distance}px)`
     }
     if(direction === "right" && slideNumber < 3){
       setSlideNumber(slideNumber + 1)
-      listRef.current.style.transform = `translateX(${-170 + distance}px)`
+      listRef.current.style.transform = `translateX(${-193 + distance}px)`
     }
   }
 
   return (
     <div className="w-full h-full z-[99] bg-black relative flex flex-col gap-4 overflow-hidden">
-      <div className="flex justify-between w-full lg:my-20 sm:my-10 sm:px-[30px] lg:px-[70px]">
+      <div className="flex justify-between w-full lg:py-20 sm:py-8 sm:pt-14 sm:px-[20px] lg:px-[70px]">
         {/* Text section */}
         <div>
-          <h1 className='text-white font-medium lg:text-[30px] sm:text-[23px]'>Our Fresh and
+          <h1 className='text-white font-medium lg:text-[50px] sm:text-[23px]'>Our Fresh and
           <span className='text-green ml-2 font-bold'>Special Food</span>
           </h1>
-          <div className="lg:w-52 sm:w-16 h-[2px] mt-2 bg-green"/>
+          <div className="lg:w-50 sm:w-28 h-[2px] mt-2 bg-green"/>
         </div>
         {/* Arrow Icon Section */}
         <div className="flex gap-4 sm:mt-20 lg:mt-0">
@@ -54,7 +56,8 @@ export const MenuSection = () => {
       </div>
 
      <FoodCart listRef={listRef} flag={true} data={foodItems?.filter((n)=>n.category ===  "Curry")}/>
+    <FoodDelivery></FoodDelivery>
+     <Menu></Menu>
     </div>
-    
   )
 };

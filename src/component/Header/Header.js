@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import cyLogo from '../../Image/cylogo.png'
+import { useEffect, useState } from 'react';
+import cyLogo from '../../Image/CyFood2.png'
 import {HiShoppingBag} from 'react-icons/hi'
 import {FaUserCircle} from 'react-icons/fa'
 import {MdEmail} from 'react-icons/md'
@@ -64,13 +64,13 @@ export const Header = () => {
     };
   return (
     <div>
-        <div className={`flex w-full lg:h-[90px] sm:h-[70px] fixed top-0 left-0 z-[999] drop-shadow-sm 
-        shadow-white ${ isScrolled? "bg-black" : ""} bg-opacity-90 items-center sm:px-[30px] lg:px-[70px] justify-center  md:justify-between 
+        <div className={`flex w-full lg:h-[90px] sm:h-[70px] fixed top-0 left-0 z-[999]
+        shadow-white ${ isScrolled? "bg-gray-dark" : ""} bg-opacity-90 items-center sm:px-[20px] lg:px-[70px] justify-center  md:justify-between 
         sm:justify-between font-[poppins]`}>
 
           <div className="">
             <Link to='/'>
-            <img className="sm:w-16 lg:w-24" src={cyLogo} alt="logo"></img>
+            <img className="sm:w-24 lg:w-40" src={cyLogo} alt="logo"></img>
             </Link>
           </div>
             <div className="mx-auto lg:block md:hidden sm:hidden">
@@ -98,7 +98,7 @@ export const Header = () => {
               </ul>
             </div>
             {/* Icon and user section*/}
-          <motion.div whileTap={{ scale: 0.7 }} className="relative sm:ml-20">
+          <motion.div whileTap={{ scale: 0.7 }} className="relative sm:ml-10">
             <HiShoppingBag className="text-[25px] text-white cursor-pointer transition-all
             duration-150"/>
             <span className="absolute w-6 h-6 bg-green rounded-full text-white

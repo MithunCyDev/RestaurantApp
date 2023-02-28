@@ -28,7 +28,7 @@ module.exports = {
       'deepgreen':'#86b12f',
       'lightgreen': '#9dd970',
       'yellow': '#ffb142',
-      'gray-dark': '#273444',
+      'gray-dark': '#212121',
       'gray': '#8492a6',
       'graylight': '#d3dce6',
       'black' : '#191919',
