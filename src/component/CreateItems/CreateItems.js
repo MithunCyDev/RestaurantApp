@@ -135,8 +135,8 @@ export const CreateItems = () => {
   };
 
   return (
-    <div className="w-full h-screen bg-notblack flex flex-col justify-center items-center">
-      <div className=" px-4 gap-3 lg:w-[800px] lg:h-[600px] sm:h-[550px] md:w-[600px] sm:w-[320px] mt-20 bg-black flex flex-col justify-center items-center rounded-md relative">
+    <div className="w-full h-screen bg-dark flex flex-col justify-center items-center">
+      <div className=" px-4 gap-3 lg:w-[800px] lg:h-[600px] sm:h-[550px] md:w-[600px] sm:w-[320px] mt-20 bg-graylight flex flex-col justify-center items-center rounded-md relative">
         {/* Alart Field and Message */}
         {field && (
           <p className={`w-full  py-2 rounded-md text-center text-lg font-semibold
@@ -149,7 +149,7 @@ export const CreateItems = () => {
 
         <div className="w-full flex justify-center items-center">
           <input type="text" required placeholder='Give me a name'
-          className="outline-none relative w-full py-2 px-11 bg-notblack text-white rounded-md font-semibold"
+          className="outline-none relative w-full py-2 px-11 bg-dark text-white rounded-md font-semibold"
           value={Name}
           onChange={(e)=> setName(e.target.value)}
           />
@@ -157,12 +157,12 @@ export const CreateItems = () => {
         </div>
 
         {/* Upload Section */}
-        <div className="flex group items-center justify-center rounded-md bg-notblack w-full sm:h-[250px] lg:h-[350px]  ">
+        <div className="flex group items-center justify-center rounded-md bg-dark w-full sm:h-[250px] lg:h-[350px]  ">
             {loading? <Loader className="text-[50px] "/> : <>
               {!imageAsset ? 
               (
                 <label className="flex flex-col items-center justify-center w-full h-[250px]
-                 bg-notblack text-white rounded-lg cursor-pointer">
+                 bg-dark text-white rounded-lg cursor-pointer">
                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
                   <svg aria-hidden="true" className="w-10 h-10 mb-3 text-gray" 
                   fill="none" stroke="currentColor" viewBox="0 0 24 24" 
@@ -199,13 +199,13 @@ export const CreateItems = () => {
         {/* Select items Section */}
           <select 
           onChange={(e)=> setCategory(e.target.value)}
-           className="w-full bg-notblack py-2 px-4 outline-none text-gray rounded-md font-semibold transition-all duration-150">
+           className="w-full bg-dark py-2 px-4 outline-none text-gray rounded-md font-semibold transition-all duration-150">
             <option value='other'>Select Category</option>
             {/* Map on all Items */}
             {items.map((item)=> ( <option 
             key={item.id}
             value={item.useParamName}
-            className="bg-notblack text-gray font-medium hover:bg-black"
+            className="bg-dark text-gray font-medium hover:bg-black"
             >{item.name} </option>))}
           </select>
           <div className="w-full flex lg:flex-row gap-3 sm:flex-col ">
@@ -213,7 +213,7 @@ export const CreateItems = () => {
             type='text' placeholder='Set Price'
             value={price}
             onChange={(e)=> setPrice(e.target.value)} 
-            className=" outline-none bg-notblack py-2 px-10 text-white w-full rounded-md relative font-semibold"/>
+            className=" outline-none bg-dark py-2 px-10 text-white w-full rounded-md relative font-semibold"/>
             <BsCurrencyDollar
             className="text-gray text-md absolute flex mt-3 items-center mx-4"
             />

@@ -3,7 +3,7 @@ import cyLogo from '../../Image/CyFood2.png'
 import {HiShoppingBag} from 'react-icons/hi'
 import {FaUserCircle} from 'react-icons/fa'
 import {MdEmail} from 'react-icons/md'
-import { IoIosAdd, IoIosLogOut } from 'react-icons/io'
+import { IoIosAdd, IoIosLogOut, IoIosCall } from 'react-icons/io'
 import { motion } from "framer-motion"
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import {app} from '../../firebase.config';
@@ -97,6 +97,13 @@ export const Header = () => {
                 </Link>
               </ul>
             </div>
+            {/* Phone Number */}
+            <div className='lg:block sm:hidden flex items-center ml-4'>
+              <p className='flex items-center text-green font-medium text-lg'>
+                <IoIosCall className='text-white'/>
+                +88012345678
+              </p>
+            </div>
             {/* Icon and user section*/}
           <motion.div whileTap={{ scale: 0.7 }} className="relative sm:ml-10">
             <HiShoppingBag className="text-[25px] text-white cursor-pointer transition-all
@@ -118,7 +125,7 @@ export const Header = () => {
                 initial={{ opacity:0, scale: 0.6 }}
                 animate={{ opacity:1, scale: 1 }}
                 exit={{ opacity:0, scale: 0.6 }}
-                className=" absolute bg-notblack rounded-md flex flex-col w-[220px] mt-6 sm:-ml-[98px] lg:-ml-[135px] justify-center">
+                className=" absolute bg-dark rounded-md flex flex-col w-[220px] mt-6 sm:-ml-[98px] lg:-ml-[135px] justify-center">
                 {user && user.email === 'rajcy1@gmail.com' && (
                     <Link to='/createitems'>
                       {/* New Items add section */}
@@ -138,7 +145,7 @@ export const Header = () => {
                 ( <p className="text-sm ml-1">Admin :<span className="text-gray ml-2 font-semibold">{user.displayName}</span></p> ) 
                 : <p className="text-[17px] ml-2 text-gray "> {user.displayName} </p>} </p>
                 {/* Display User Email  */}
-                <p className="flex items-center bg-black pl-4 py-2 border-t border-gray-dark text-gray text-[13px]">
+                <p className="flex items-center bg-black pl-4 py-2 border-t border-dark text-gray text-[13px]">
                   <MdEmail className="text-gray text-lg mr-1"/>
                   {user.email}</p>
                   

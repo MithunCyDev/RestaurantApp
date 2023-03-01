@@ -16,7 +16,7 @@ export const Menu = () => {
 
   return (
     <section className='w-full sm:my-14 flex flex-col bg-black '>
-        <div className='bg-gray-dark lg:py-20 lg:pt-20 sm:py-10 -mb-6 sm:px-[20px] lg:px-[70px]'>
+        <div className='bg-dark lg:py-20 lg:pt-20 sm:py-10 -mb-6 sm:px-[20px] lg:px-[70px]'>
           <div className='flex justify-center'>
             <div className='lg:mb-10 sm:-mb-8'>
               <h1 className='text-white font-medium lg:text-[50px] sm:text-[23px]'>Our Menu

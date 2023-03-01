@@ -24,4 +24,4 @@ export const FoodDeliverItems =[
         icon: BsArrowCounterclockwise,
         id: 4
     },
-]
+];

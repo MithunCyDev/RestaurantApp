@@ -9,7 +9,7 @@ export const FoodCart = ({flag, data, listRef} ) => {
     <div ref={listRef} className={`sm:px-[20px] lg:px-[70px] lg:py-10  w-full flex transition-all duration-500 lg:gap-10 sm:gap-4 ${flag ? " scroll scroll-smooth scrollbar-hide " 
     : " lg:overflow-x-hidden sm:overflow-x-scroll scrollbar-hide lg:flex-wrap lg:justify-center"}`}>
       {data && data.map((items)=>(
-        <div key={items.id} className="relative flex justify-between items-center px-4 shadow bg-gray-dark min-w-[300px] min-h-[180px] rounded-lg">
+        <div key={items.id} className="relative flex justify-between items-center px-4 shadow bg-dark min-w-[300px] min-h-[180px] rounded-lg">
           <div className="flex items-center">
               <motion.img className=" w-28 h-32 object-contain absolute" whileHover={{scale: 1.1,}} 
               src={items.imageURL} alt="Food"/>

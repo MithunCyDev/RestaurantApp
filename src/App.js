@@ -9,6 +9,7 @@ import { Order } from './component/Order/Order';
 import { actionType } from './Context/Reducer';
 import { useStateValue } from './Context/StateProvider';
 import { getAllFoodItems } from './Utils/FirebaseFunction';
+import { NotFound } from './component/NotFound/NotFound';
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
           <Route path='/home' element={<Hero/>}/>
           <Route path='/createitems' element={<CreateItems/>}/>
           <Route path='/order' element={<Order></Order>}/>
+          <Route path='/notFound' element={<NotFound/>}/>
         </Routes>
     </>
   );

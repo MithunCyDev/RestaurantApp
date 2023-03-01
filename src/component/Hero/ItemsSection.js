@@ -33,7 +33,7 @@ export const ItemsSection = () => {
       <div className="flex flex-wrap items-center justify-center  lg:gap-20 sm:gap-10">
         
         {itemsArray.map((items)=>(
-          <div key={items.id} className="bg-gray-dark  text-white flex justify-center items-center p-2 sm:w-32 sm:h-12 lg:w-72 lg:h-24 
+          <div key={items.id} className="bg-dark  text-white flex justify-center items-center p-2 sm:w-32 sm:h-12 lg:w-72 lg:h-24 
             rounded-lg drop-shadow-md border-r-2 border-l-2 border-green ">
             <div className="lg:py-4 lg:px-4 sm:py-1 sm:px-1 bg-green rounded-full">
             <items.icon className="lg:text-[30px] sm:text-[15px]" />

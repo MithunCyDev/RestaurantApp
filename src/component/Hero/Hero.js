@@ -30,7 +30,7 @@ export const Hero = () => {
               <div className='flex items-center gap-6'>
                 <motion.button whileTap={{ scale: 0.9 }} className="flex relative font-[poppins] sm:mt-8 mt-12 lg:py-4 lg:px-12 sm:py-3 sm:px-8
                  text-white font-semibold rounded-full bg-green drop-shadow-lg shadow-notblack
-                 ">Order Now
+                 ">Order Page
                 </motion.button>
               </div>
           </div>
