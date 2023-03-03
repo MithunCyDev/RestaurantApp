@@ -17,7 +17,7 @@ export const MenuSection = () => {
   const [{foodItems}, dispatch] = useStateValue();
   const listRef = useRef();
   
-
+  // Slider Function
   const handleClick = (direction)=>{
     let distance = listRef.current.getBoundingClientRect().x ;
     setMove(true)
@@ -55,7 +55,7 @@ export const MenuSection = () => {
         </div>
       </div>
 
-     <FoodCart listRef={listRef} flag={true} data={foodItems?.filter((n)=>n.category ===  "Curry")}/>
+     <FoodCart listRef={listRef} flag={true} data={foodItems?.filter((n)=>n.category === "Chicken")}/>
     <FoodDelivery></FoodDelivery>
      <Menu></Menu>
     </div>

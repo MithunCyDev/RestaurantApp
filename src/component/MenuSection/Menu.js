@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { itemsArray } from '../Hero/ItemsArray';
+import { itemsArray } from './ItemsArray';
 import { BsArrowRightCircle} from 'react-icons/bs'
 import { useStateValue } from '../../Context/StateProvider';
 import { FoodCart } from './FoodCart';

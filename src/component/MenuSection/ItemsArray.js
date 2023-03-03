@@ -15,7 +15,7 @@ export const itemsArray =[
       id : '1',
     },
     {
-      name: 'Hot Pizza',
+      name: 'Pizza',
       icon: GiFullPizza,
       id :'2',
     },

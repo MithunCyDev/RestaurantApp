@@ -9,6 +9,7 @@ import galarry6 from "../../Image/galarry6.jpg";
 
 import { FoodDeliverItems } from "./FoodDeliverItems";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export const FoodDelivery = () => {
   return (
@@ -83,12 +84,14 @@ export const FoodDelivery = () => {
           </p>
 
           <div className="mt-8 ">
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              className="lg:py-4 lg:px-12 sm:py-3 sm:px-8 rounded-full font-semibold bg-green text-white"
-            >
-              Read More
-            </motion.button>
+            <Link to='/about'>
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                className="lg:py-4 lg:px-12 sm:py-3 sm:px-8 rounded-full font-semibold bg-green text-white"
+              >
+                Read More
+              </motion.button>
+            </Link>
           </div>
         </div>
       </div>

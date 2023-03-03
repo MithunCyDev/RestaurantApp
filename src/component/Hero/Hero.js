@@ -10,6 +10,8 @@ import { motion, useTime, useTransform} from "framer-motion"
 import { ItemsSection } from './ItemsSection'
 import { MenuSection } from '../MenuSection/MenuSection'
 import { Footer } from '../Footer/Footer'
+import { Link } from 'react-router-dom'
+import { MobileApp } from '../MobileApp/MobileApp'
 
 
 export const Hero = () => {
@@ -28,10 +30,12 @@ export const Hero = () => {
               <h2 className="text-white lg:text-[60px] md:text-[60px] sm:text-[40px] lg:-mt-4 sm:-mt-2 mb-4 font-bold ">Anytime</h2>
               <p className="text-white">Lorem ipsum dolor consectetur adipisicing elit. Accusamus voluptate<br></br> labore suscipit facilis sunt voluptatum dolores, doloremque placeat repudiandae?</p>
               <div className='flex items-center gap-6'>
+                <Link to="/order">
                 <motion.button whileTap={{ scale: 0.9 }} className="flex relative font-[poppins] sm:mt-8 mt-12 lg:py-4 lg:px-12 sm:py-3 sm:px-8
                  text-white font-semibold rounded-full bg-green drop-shadow-lg shadow-notblack
                  ">Order Page
                 </motion.button>
+                </Link>
               </div>
           </div>
           
@@ -50,6 +54,7 @@ export const Hero = () => {
       </div>
       <ItemsSection/>
       <MenuSection/>
+      <MobileApp/>
       <Footer></Footer>
     </div>
     </div>
