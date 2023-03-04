@@ -7,13 +7,15 @@ import { AnimatePresence } from 'framer-motion';
 import { StateProvider } from './Context/StateProvider';
 import { InitialState } from './Context/InitialState';
 import reducer from './Context/Reducer';
+import { Spiner } from './Spiner/Spiner';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  
   <Router>
     <StateProvider initialState={InitialState} reducer = {reducer}>
       <AnimatePresence>
-        <App />
+        <Spiner/>
     </AnimatePresence>
     </StateProvider>
   </Router>

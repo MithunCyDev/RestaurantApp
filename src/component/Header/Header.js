@@ -3,17 +3,18 @@ import cyLogo from "../../Image/CyFood2.png";
 import { HiShoppingBag } from "react-icons/hi";
 import { FaUserCircle } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { IoIosAdd, IoIosLogOut, IoIosCall } from "react-icons/io";
+import { IoIosAdd, IoIosLogOut } from "react-icons/io";
 import { motion } from "framer-motion";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from "../../firebase.config";
 import { actionType } from "../../Context/Reducer";
 import { useStateValue } from "../../Context/StateProvider";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 export const Header = () => {
+  const [mobileMenu, setMobileMenu] = useState(false);
+
   //Header Scrollbar function
   const [isScrolled, setIsScrolled] = useState(false);
   window.onscroll = () => {
@@ -54,26 +55,29 @@ export const Header = () => {
     });
   };
 
-  // If no user in CreateItem section then back home page
 
-  const [mobileMenu, setMobileMenu]= useState(false)
+  
 
   return (
     <div>
-
-      <div 
-      className={ mobileMenu ? "sm:w-64 md:w-80 h-screen pt-6 sm:px-[20px] lg:px-[70px] left-0 top-0 bg-black z-[9999] lg:hidden fixed" 
-      :" sm:hidden -ml-[300px]"}>
-        {/* Humbarger Icon for mobile menu open close*/}
-        <AiOutlineClose onClick={()=> setMobileMenu(false)}
-        className="text-green text-2xl absolute sm:left-52 md:left-64 -mt-1 cursor-pointer"/>
-        <img
-          className="w-24 mb-5 relative"
-          src={cyLogo}
-          alt="logo"
-        ></img>
+      <div
+        className={
+          mobileMenu
+            ? "sm:w-64 md:w-80 h-screen pt-6 sm:px-[20px] lg:px-[70px] left-0 top-0 bg-black z-[9999] lg:hidden fixed"
+            : "sm:hidden"
+        }
+      >
+        {/* Humbarger Icon for mobile menu open & close*/}
+        <AiOutlineClose
+          onClick={() => setMobileMenu(false)}
+          className="text-green text-2xl absolute sm:left-52 md:left-64 -mt-1 cursor-pointer"
+        />
+        <img className="w-24 mb-5 relative" src={cyLogo} alt="logo"></img>
         {/* Mobile menu */}
-        <ul onClick={()=>setMobileMenu(false)} className="flex flex-col justify-center ">
+        <ul
+          onClick={() => setMobileMenu(false)}
+          className="flex flex-col justify-center "
+        >
           <Link to="/home">
             <motion.li
               whileTap={{ scale: 0.9 }}
@@ -121,8 +125,10 @@ export const Header = () => {
         sm:justify-between font-[poppins]`}
       >
         {/* Humbarger Icon for mobile menu open*/}
-        <AiOutlineMenu onClick={()=>setMobileMenu(true)}
-        className="text-white text-2xl lg:hidden sm:block cursor-pointer" />
+        <AiOutlineMenu
+          onClick={() => setMobileMenu(true)}
+          className="text-white text-2xl lg:hidden sm:block cursor-pointer"
+        />
 
         <div className="">
           <Link to="/">
@@ -173,7 +179,7 @@ export const Header = () => {
             </Link>
           </ul>
         </div>
-        
+
         {/* Icon and user section*/}
         <motion.div
           whileTap={{ scale: 0.7 }}
@@ -192,7 +198,7 @@ export const Header = () => {
         </motion.div>
 
         {/* User and Login section */}
-        <div onClick={()=>setMobileMenu(false)}>
+        <div onClick={() => setMobileMenu(false)}>
           <div className="w-24 ml-12" onClick={login}>
             {user ? (
               <motion.img
@@ -212,7 +218,6 @@ export const Header = () => {
 
             {Menu && (
               <motion.div
-                
                 initial={{ opacity: 0, scale: 0.6 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.6 }}
@@ -243,10 +248,9 @@ export const Header = () => {
                     </p>
                   ) : (
                     <p className="text-[17px] ml-2 text-gray ">
-                      {" "}
-                      {user.displayName}{" "}
+                      {user.displayName}
                     </p>
-                  )}{" "}
+                  )}
                 </p>
                 {/* Display User Email  */}
                 <p className="flex items-center bg-black pl-4 py-2 border-t border-dark text-gray text-[13px]">
