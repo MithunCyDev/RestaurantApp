@@ -10,6 +10,7 @@ import { MenuSection } from "../MenuSection/MenuSection";
 import { Footer } from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import { MobileApp } from "../MobileApp/MobileApp";
+import { CartContainer } from "../CartContainer/CartContainer";
 
 export const Hero = () => {
   const time = useTime();
@@ -88,6 +89,7 @@ export const Hero = () => {
         <ItemsSection />
         <MenuSection />
         <MobileApp />
+        <CartContainer/>
         <Footer></Footer>
       </div>
     </section>

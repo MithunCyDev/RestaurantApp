@@ -58,7 +58,10 @@ export const Header = () => {
 
   return (
     <div>
-      <div
+      <motion.div
+      initial={{ opacity: 0, x: 300}}
+      animate={{ opacity: 1, x: 0}}
+      exit={{ opacity: 0, x: 300}}
         className={
           mobileMenu
             ? "sm:w-64 md:w-80 h-screen pt-6 sm:px-[20px] lg:px-[70px] left-0 top-0 bg-black z-[9999] lg:hidden fixed"
@@ -102,7 +105,7 @@ export const Header = () => {
             </motion.li>
           </NavLink>
         </ul>
-      </div>
+      </motion.div>
 
       <div
         className={`flex w-full lg:h-[90px] sm:h-[70px] fixed top-0 left-0 z-[999]
