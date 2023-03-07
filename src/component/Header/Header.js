@@ -1,3 +1,4 @@
+import "./Header.css";
 import { useEffect, useState } from "react";
 import cyLogo from "../../Image/CyFood2.png";
 import { HiShoppingBag } from "react-icons/hi";
@@ -9,7 +10,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from "../../firebase.config";
 import { actionType } from "../../Context/Reducer";
 import { useStateValue } from "../../Context/StateProvider";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 export const Header = () => {
@@ -55,9 +56,6 @@ export const Header = () => {
     });
   };
 
-
-  
-
   return (
     <div>
       <div
@@ -74,46 +72,35 @@ export const Header = () => {
         />
         <img className="w-24 mb-5 relative" src={cyLogo} alt="logo"></img>
         {/* Mobile menu */}
-        <ul
-          onClick={() => setMobileMenu(false)}
-          className="flex flex-col justify-center "
-        >
-          <Link to="/home">
+        <ul onClick={() => setMobileMenu(false)} className="flex flex-col justify-center ">
+          <NavLink className='text-white' activeclassname="active" to="/home">
             <motion.li
               whileTap={{ scale: 0.9 }}
-              className="text-white font-semibold cursor-pointer text-[16px] py-4 transition-all duration-75
-                    hover:text-green"
-            >
+              className="font-semibold cursor-pointer text-[16px] py-4 transition-all duration-75 hover:text-green">
               Home
             </motion.li>
-          </Link>
-          <Link to="/about">
+          </NavLink>
+          <NavLink className='text-white' activeclassname="active" to="/about">
             <motion.li
               whileTap={{ scale: 0.9 }}
-              className="text-white font-semibold cursor-pointer text-[16px] py-4 transition-all duration-75
-                    hover:text-green"
-            >
+              className="font-semibold cursor-pointer text-[16px] py-4 transition-all duration-75 hover:text-green">
               About Us
             </motion.li>
-          </Link>
-          <Link to="/order">
+          </NavLink>
+          <NavLink className='text-white' activeclassname="active" to="/order">
             <motion.li
               whileTap={{ scale: 0.9 }}
-              className="text-white font-semibold cursor-pointer text-[16px] py-4 transition-all duration-75
-                  hover:text-green"
-            >
+              className="font-semibold cursor-pointer text-[16px] py-4 transition-all duration-75 hover:text-green">
               Orders
             </motion.li>
-          </Link>
-          <Link to="/contact">
+          </NavLink>
+          <NavLink className='text-white' activeclassname="active" to="/contact">
             <motion.li
               whileTap={{ scale: 0.9 }}
-              className="text-white font-semibold cursor-pointer text-[16px] py-4 transition-all duration-75
-                  hover:text-green"
-            >
+              className="font-semibold cursor-pointer text-[16px] py-4 transition-all duration-75 hover:text-green">
               Contact
             </motion.li>
-          </Link>
+          </NavLink>
         </ul>
       </div>
 
@@ -130,53 +117,53 @@ export const Header = () => {
           className="text-white text-2xl lg:hidden sm:block cursor-pointer"
         />
 
+        {/* Desktop menu */}
         <div className="">
-          <Link to="/">
+          <NavLink to="/">
+            {/* Logo  */}
             <img
               className="sm:w-24 sm:hidden lg:block lg:w-40"
               src={cyLogo}
               alt="logo"
             ></img>
-          </Link>
+          </NavLink>
         </div>
         <div className="mx-auto lg:block md:hidden sm:hidden">
           <ul className="flex items-center justify-center gap-[60px] ml-20">
-            <Link to="/home">
+            <NavLink className="text-white" activeclassname="active" to="/home">
               <motion.li
                 whileTap={{ scale: 0.7 }}
-                className="text-green font-semibold cursor-pointer transition-all duration-75
-                  hover:text-green"
-              >
+                className="font-semibold cursor-pointer transition-all duration-75 hover:text-green">
                 Home
               </motion.li>
-            </Link>
-            <Link to="/about">
+            </NavLink>
+            <NavLink
+              className="text-white "
+              activeclassname="active" to="/about">
               <motion.li
                 whileTap={{ scale: 0.7 }}
-                className="text-white font-semibold cursor-pointer transition-all duration-75
-                  hover:text-green"
-              >
+                className="font-semibold cursor-pointer transition-all duration-75 hover:text-green">
                 About Us
               </motion.li>
-            </Link>
-            <Link to="/order">
+            </NavLink>
+            <NavLink
+              className="text-white "
+              activeclassname="active" to="/order">
               <motion.li
                 whileTap={{ scale: 0.7 }}
-                className="text-white font-semibold cursor-pointer transition-all duration-75
-                  hover:text-green"
-              >
+                className="font-semibold cursor-pointer transition-all duration-75 hover:text-green">
                 Orders
               </motion.li>
-            </Link>
-            <Link to="/contact">
+            </NavLink>
+            <NavLink
+              className="text-white "
+              activeclassname="active"to="/contact">
               <motion.li
                 whileTap={{ scale: 0.7 }}
-                className="text-white font-semibold cursor-pointer transition-all duration-75
-                hover:text-green"
-              >
+                className="font-semibold cursor-pointer transition-all duration-75 hover:text-green">
                 Contact
               </motion.li>
-            </Link>
+            </NavLink>
           </ul>
         </div>
 

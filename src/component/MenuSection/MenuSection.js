@@ -57,7 +57,7 @@ export const MenuSection = () => {
       <FoodCart
         listRef={listRef}
         flag={true}
-        data={foodItems?.filter((n) => n.category === "Chicken")}
+        data={foodItems?.filter((n) => n.category === "Curry")}
       />
       <FoodDelivery></FoodDelivery>
       <Menu></Menu>

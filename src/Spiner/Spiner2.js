@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
+import { ThreeDots } from "react-loader-spinner";
 
 const Spiner2 = () => {
-    const [ loading, setLoading] = useState(false);
-    useEffect(() => {
-      setLoading(true);
-      setTimeout(() => {
-        setLoading(false);
-      }, 3000);
-    }, []);
+    
+    return(
+      <div className=" w-full h-screen bg-black flex justify-center items-center">
+          <ThreeDots width="80" color="#9aca3c" />
+      </div>
+    )
 };
 
 export default Spiner2;

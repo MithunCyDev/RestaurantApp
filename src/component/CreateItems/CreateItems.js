@@ -14,7 +14,7 @@ import {
 } from "firebase/storage";
 import { storage } from "../../firebase.config";
 import { motion } from "framer-motion";
-import { ThreeDots } from "react-loader-spinner";
+import Spiner2 from '../../Spiner/Spiner2'
 
 export const CreateItems = () => {
   const [errorMessage, setErrorMessage] = useState(null);
@@ -147,15 +147,13 @@ export const CreateItems = () => {
     setPageLoading(true);
     setTimeout(() => {
       setPageLoading(false);
-    }, 2000);
+    }, 1000);
   }, []);
 
   return (
     <>
       {pageLoading ? (
-        <div className=" w-full h-screen bg-black flex justify-center items-center">
-          <ThreeDots width="80" color="#9aca3c" />
-        </div>
+        <Spiner2/>
       ) : (
         <div className="w-full h-screen bg-dark flex flex-col justify-center items-center">
           <div className=" px-4 gap-3 lg:w-[800px] lg:h-[600px] sm:h-[550px] md:w-[600px] sm:w-[320px] mt-20 bg-graylight flex flex-col justify-center items-center rounded-md relative">
@@ -163,7 +161,7 @@ export const CreateItems = () => {
             {field && (
               <p
                 className={`w-full  py-2 rounded-md text-center text-lg font-semibold
-          ${alart === false ? "bg-red text-white" : "bg-green text-white"}`}
+                ${alart === false ? "bg-red text-white" : "bg-green text-white"}`}
               >
                 {errorMessage}
               </p>

@@ -2,7 +2,6 @@ import React from "react";
 import googleButton from "../../Image/googleButton.png";
 import AppleButton from "../../Image/appStore.png";
 import MobileApps from "../../Image/AppMobile.png";
-import { Link } from "react-router-dom";
 
 export const MobileApp = () => {
   return (
@@ -19,20 +18,20 @@ export const MobileApp = () => {
             Go ahead, download us.
           </p>
           <div className="flex gap-6 lg:mt-14 sm:mt-8">
-            <Link to="/notFound">
+            <a href="https://play.google.com/store/apps">
               <img
                 className="lg:w-40 sm:w-32 cursor-pointer"
                 src={googleButton}
                 alt="google"
               />
-            </Link>
-            <Link to="/notFound">
+            </a>
+            <a href="https://www.apple.com/app-store/">
               <img
                 className="lg:w-40 sm:w-32 cursor-pointer"
                 src={AppleButton}
                 alt="google"
               />
-            </Link>
+            </a>
           </div>
         </div>
 

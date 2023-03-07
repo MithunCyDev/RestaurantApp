@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import aboutBg from "../../Image/AboutBg.jpg";
 import { ThreeDots } from "react-loader-spinner";
+import Spiner2 from "../../Spiner/Spiner2";
 
 export const About = () => {
 
@@ -12,15 +13,13 @@ export const About = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
   }, []);
 
   return (
     <>
       {loading ? (
-        <div className=" w-full h-screen bg-black flex justify-center items-center">
-          <ThreeDots width="80" color="#9aca3c" />
-        </div>
+        <Spiner2/>
       ) : (
         <section className="w-full sm:h-full lg:h-screen flex flex-col bg-black lg:pt-24 sm:pt-20 ">
           <div>
