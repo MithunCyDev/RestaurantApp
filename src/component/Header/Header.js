@@ -28,13 +28,13 @@ export const Header = () => {
   // Google Auth provider
   const firebaseAuth = getAuth(app);
   const provider = new GoogleAuthProvider();
-  //custom hook for user
-  const [{ user }, dispatch] = useStateValue();
+  //custom hook from State Provider
+  const [{ user, foodCart, cartItems }, dispatch] = useStateValue();
   //Google Auth function
   const login = async () => {
     if (!user) {
       const {
-        user: { refreshToken, providerData },
+        user: { providerData },
       } = await signInWithPopup(firebaseAuth, provider);
       dispatch({
         type: actionType.SET_USER,
@@ -56,12 +56,20 @@ export const Header = () => {
     });
   };
 
+  //Show cart Function
+  const showCart = () => {
+    dispatch({
+      type: actionType.SET_FOOD_CART,
+      foodCart: !foodCart,
+    });
+  };
+
   return (
     <div>
       <motion.div
-      initial={{ opacity: 0, x: 300}}
-      animate={{ opacity: 1, x: 0}}
-      exit={{ opacity: 0, x: 300}}
+        initial={{ opacity: 0, x: 300 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: 300 }}
         className={
           mobileMenu
             ? "sm:w-64 md:w-80 h-screen pt-6 sm:px-[20px] lg:px-[70px] left-0 top-0 bg-black z-[9999] lg:hidden fixed"
@@ -75,32 +83,43 @@ export const Header = () => {
         />
         <img className="w-24 mb-5 relative" src={cyLogo} alt="logo"></img>
         {/* Mobile menu */}
-        <ul onClick={() => setMobileMenu(false)} className="flex flex-col justify-center ">
-          <NavLink className='text-white' activeclassname="active" to="/home">
+        <ul
+          onClick={() => setMobileMenu(false)}
+          className="flex flex-col justify-center "
+        >
+          <NavLink className="text-white" activeclassname="active" to="/home">
             <motion.li
               whileTap={{ scale: 0.9 }}
-              className="font-semibold cursor-pointer text-[16px] py-4 transition-all duration-75 hover:text-green">
+              className="font-semibold cursor-pointer text-[16px] py-4 transition-all duration-75 hover:text-green"
+            >
               Home
             </motion.li>
           </NavLink>
-          <NavLink className='text-white' activeclassname="active" to="/about">
+          <NavLink className="text-white" activeclassname="active" to="/about">
             <motion.li
               whileTap={{ scale: 0.9 }}
-              className="font-semibold cursor-pointer text-[16px] py-4 transition-all duration-75 hover:text-green">
+              className="font-semibold cursor-pointer text-[16px] py-4 transition-all duration-75 hover:text-green"
+            >
               About Us
             </motion.li>
           </NavLink>
-          <NavLink className='text-white' activeclassname="active" to="/order">
+          <NavLink className="text-white" activeclassname="active" to="/order">
             <motion.li
               whileTap={{ scale: 0.9 }}
-              className="font-semibold cursor-pointer text-[16px] py-4 transition-all duration-75 hover:text-green">
+              className="font-semibold cursor-pointer text-[16px] py-4 transition-all duration-75 hover:text-green"
+            >
               Orders
             </motion.li>
           </NavLink>
-          <NavLink className='text-white' activeclassname="active" to="/contact">
+          <NavLink
+            className="text-white"
+            activeclassname="active"
+            to="/contact"
+          >
             <motion.li
               whileTap={{ scale: 0.9 }}
-              className="font-semibold cursor-pointer text-[16px] py-4 transition-all duration-75 hover:text-green">
+              className="font-semibold cursor-pointer text-[16px] py-4 transition-all duration-75 hover:text-green"
+            >
               Contact
             </motion.li>
           </NavLink>
@@ -136,34 +155,44 @@ export const Header = () => {
             <NavLink className="text-white" activeclassname="active" to="/home">
               <motion.li
                 whileTap={{ scale: 0.7 }}
-                className="font-semibold cursor-pointer transition-all duration-75 hover:text-green">
+                className="font-semibold cursor-pointer transition-all duration-75 hover:text-green"
+              >
                 Home
               </motion.li>
             </NavLink>
             <NavLink
               className="text-white "
-              activeclassname="active" to="/about">
+              activeclassname="active"
+              to="/about"
+            >
               <motion.li
                 whileTap={{ scale: 0.7 }}
-                className="font-semibold cursor-pointer transition-all duration-75 hover:text-green">
+                className="font-semibold cursor-pointer transition-all duration-75 hover:text-green"
+              >
                 About Us
               </motion.li>
             </NavLink>
             <NavLink
               className="text-white "
-              activeclassname="active" to="/order">
+              activeclassname="active"
+              to="/order"
+            >
               <motion.li
                 whileTap={{ scale: 0.7 }}
-                className="font-semibold cursor-pointer transition-all duration-75 hover:text-green">
+                className="font-semibold cursor-pointer transition-all duration-75 hover:text-green"
+              >
                 Orders
               </motion.li>
             </NavLink>
             <NavLink
               className="text-white "
-              activeclassname="active"to="/contact">
+              activeclassname="active"
+              to="/contact"
+            >
               <motion.li
                 whileTap={{ scale: 0.7 }}
-                className="font-semibold cursor-pointer transition-all duration-75 hover:text-green">
+                className="font-semibold cursor-pointer transition-all duration-75 hover:text-green"
+              >
                 Contact
               </motion.li>
             </NavLink>
@@ -172,19 +201,23 @@ export const Header = () => {
 
         {/* Icon and user section*/}
         <motion.div
-          whileTap={{ scale: 0.7 }}
+          onClick={showCart}
+          whileTap={{ scale: 0.8 }}
           className="relative sm:ml-20 md:-ml-40 lg:ml-5"
         >
+          {/* shopping Icon */}
           <HiShoppingBag
-            className="text-[25px] text-white cursor-pointer transition-all
-            duration-150"
+            className="text-[25px] text-white cursor-pointer"
           />
-          <span
-            className="absolute w-6 h-6 bg-green rounded-full text-white
+          {/* Cart value */}
+          {cartItems && cartItems.length > 0 && (
+            <div
+              className="absolute w-6 h-6 bg-green rounded-full text-white
             flex justify-center items-center -top-2.5 left-3.5"
-          >
-            3
-          </span>
+            >
+              {cartItems.length}
+            </div>
+          )}
         </motion.div>
 
         {/* User and Login section */}

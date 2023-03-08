@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { HiShoppingBag } from 'react-icons/hi'
 import  './FoodCart.css';
 import  notFound from '../../Image/notFound.jpg'
+import { useStateValue } from '../../Context/StateProvider';
+import { actionType } from '../../Context/Reducer';
 
 export const FoodCart = ({flag, data, listRef} ) => {
+
+  const [foodItems, setfoodItems] = useState([]);
+
+  const [{cartItems}, dispatch] = useStateValue();
+
+  const addToCart = ()=>{
+    dispatch({
+      type: actionType.SET_CART_ITEMS,
+      cartItems: foodItems
+    });
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  };
+
+  useEffect(()=>{
+    addToCart()
+  },[foodItems]);
   return (
     
     <div ref={listRef} className={`sm:px-[20px] lg:px-[70px] lg:py-10  w-full flex transition-all duration-500 lg:gap-10 sm:gap-4 ${flag 
@@ -19,8 +37,11 @@ export const FoodCart = ({flag, data, listRef} ) => {
                 src={items.imageURL} alt="Food"/>
             </div>
             <div className="flex flex-col text-right">
-                <HiShoppingBag className=" absolute bg-green w-10 h-10 p-2 rounded-full 
-                text-white cursor-pointer top-6 right-4 hover:bg-opacity-70"/>
+                
+                  <HiShoppingBag  onClick={()=> setfoodItems([...cartItems, items])}
+                  className=" absolute bg-green w-10 h-10 p-2 rounded-full 
+                  text-white cursor-pointer top-6 right-4 hover:bg-opacity-70"/>
+                
                 <h1 className="text-white text-md font-semibold mt-16 ml-5">{items.title}</h1>
                 <p className="text-green text-md font-medium ml-16 mb-2">Price: {items.price}</p>
                 <div className='bg-green w-24 bg-opacity-30 text-white rounded-full ml-24'>
