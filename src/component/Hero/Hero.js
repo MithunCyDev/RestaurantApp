@@ -15,8 +15,6 @@ import { useStateValue } from "../../Context/StateProvider";
 
 export const Hero = () => {
 
-  const [{foodCart}, dispatch] = useStateValue()
-  
   const time = useTime();
   const rotate = useTransform(time, [0, 40000], [0, 360], { clamp: false });
   return (
@@ -93,7 +91,6 @@ export const Hero = () => {
         <ItemsSection />
         <MenuSection />
         <MobileApp />
-        {foodCart && <CartContainer/>}
         <Footer></Footer>
       </div>
     </section>

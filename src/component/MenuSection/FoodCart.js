@@ -17,8 +17,9 @@ export const FoodCart = ({flag, data, listRef} ) => {
       type: actionType.SET_CART_ITEMS,
       cartItems: foodItems
     });
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
   };
+
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
   useEffect(()=>{
     addToCart()
@@ -38,7 +39,7 @@ export const FoodCart = ({flag, data, listRef} ) => {
             </div>
             <div className="flex flex-col text-right">
                 
-                  <HiShoppingBag  onClick={()=> setfoodItems([...cartItems, items])}
+                  <HiShoppingBag  onClick={()=> setfoodItems([ ...cartItems, items])}
                   className=" absolute bg-green w-10 h-10 p-2 rounded-full 
                   text-white cursor-pointer top-6 right-4 hover:bg-opacity-70"/>
                 

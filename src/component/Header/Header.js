@@ -1,5 +1,5 @@
 import "./Header.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import cyLogo from "../../Image/CyFood2.png";
 import { HiShoppingBag } from "react-icons/hi";
 import { FaUserCircle } from "react-icons/fa";
@@ -12,6 +12,7 @@ import { actionType } from "../../Context/Reducer";
 import { useStateValue } from "../../Context/StateProvider";
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { CartContainer } from "../CartContainer/CartContainer";
 
 export const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -66,13 +67,10 @@ export const Header = () => {
 
   return (
     <div>
-      <motion.div
-        initial={{ opacity: 0, x: 300 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: 300 }}
+      <div
         className={
           mobileMenu
-            ? "sm:w-64 md:w-80 h-screen pt-6 sm:px-[20px] lg:px-[70px] left-0 top-0 bg-black z-[9999] lg:hidden fixed"
+            ? "sm:w-64 md:w-80 lg:hidden h-screen pt-6 sm:px-[20px] lg:px-[70px] left-0 top-0 bg-black z-[9999] fixed"
             : "sm:hidden"
         }
       >
@@ -124,7 +122,7 @@ export const Header = () => {
             </motion.li>
           </NavLink>
         </ul>
-      </motion.div>
+      </div>
 
       <div
         className={`flex w-full lg:h-[90px] sm:h-[70px] fixed top-0 left-0 z-[999]
@@ -203,7 +201,7 @@ export const Header = () => {
         <motion.div
           onClick={showCart}
           whileTap={{ scale: 0.8 }}
-          className="relative sm:ml-20 md:-ml-40 lg:ml-5"
+          className="relative sm:ml-20 md:-ml-40 lg:ml-5  z-[99999]"
         >
           {/* shopping Icon */}
           <HiShoppingBag
@@ -297,6 +295,7 @@ export const Header = () => {
           </div>
         </div>
       </div>
+      {foodCart && <CartContainer/>}
     </div>
   );
 };

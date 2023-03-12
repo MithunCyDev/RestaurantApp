@@ -10,7 +10,7 @@ import { useStateValue } from "../../Context/StateProvider";
 import { actionType } from "../../Context/Reducer";
 
 export const CartContainer = () => {
-  const [CartDown, setCartDown] = useState(false);
+  const [CartDown, setCartDown] = useState(true);
 
   const [{ foodCart, cartItems }, dispatch] = useStateValue();
 
@@ -117,7 +117,7 @@ export const CartContainer = () => {
         className={
           CartDown
             ? " hidden"
-            : " border-t border-gray border-opacity-50 cursor-pointer flex justify-center items-center bg-dark h-20 lg:mt-20 sm:py-2 bottom-0 w-full sticky rounded-t-2xl"
+            : " border-t border-gray border-opacity-50 cursor-pointer flex justify-center items-center bg-dark h-20 lg:mt-24 sm:py-2 bottom-0 w-full sticky rounded-t-2xl"
         }
       >
         <IoIosArrowUp className="text-gray text-xl cursor-pointer hover:text-green" />

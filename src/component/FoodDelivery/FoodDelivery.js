@@ -1,13 +1,10 @@
 import React from "react";
-import { CiDeliveryTruck } from "react-icons/ci";
 import galarry1 from "../../Image/galarry1.jpg";
 import galarry2 from "../../Image/galarry2.jpg";
 import galarry3 from "../../Image/galarry3.jpg";
 import galarry4 from "../../Image/galarry4.jpg";
 import galarry5 from "../../Image/galarry5.jpg";
 import galarry6 from "../../Image/galarry6.jpg";
-
-import { FoodDeliverItems } from "./FoodDeliverItems";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
