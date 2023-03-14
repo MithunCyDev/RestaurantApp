@@ -27,7 +27,7 @@ export const Hero = () => {
     if (user === undefined || null) {
       setTimeout(() => {
         setAlartClose(true);
-      }, 10000);
+      }, 15000);
     } 
     if( user !== null){
       setAlartClose(false)
@@ -60,7 +60,7 @@ export const Hero = () => {
             ? "w-full h-screen z-[99999] fixed flex justify-center items-center"
             : "hidden"}>
         <div className="bg-black bg-opacity-90 w-full h-screen flex flex-col gap-4 justify-center items-center relative">
-          <h1 className="text-white lg:text-2xl sm:text-lg font-semibold">
+          <h1 className="text-white lg:text-xl sm:text-md font-semibold">
             Please SignIn/SignUp First
           </h1>
           <motion.button // google Button

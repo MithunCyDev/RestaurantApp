@@ -48,7 +48,7 @@ export const Header = () => {
   // LogOut Function
   const logOut = () => {
     setMenu(false);
-    localStorage.clear();
+    localStorage.removeItem('user');
 
     dispatch({
       type: actionType.SET_USER,
