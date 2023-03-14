@@ -10,15 +10,39 @@ import { MenuSection } from "../MenuSection/MenuSection";
 import { Footer } from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import { MobileApp } from "../MobileApp/MobileApp";
-import { CartContainer } from "../CartContainer/CartContainer";
+import { AiOutlineClose } from "react-icons/ai";
 import { useStateValue } from "../../Context/StateProvider";
 
 export const Hero = () => {
-
   const time = useTime();
   const rotate = useTransform(time, [0, 40000], [0, 360], { clamp: false });
+  const [{user}, dispatch] = useStateValue();
+  const [alartClose, setAlartClose] = useState(false)
+
+  useEffect(()=>{
+    // there is no user alert for signin
+    if(user === undefined || null ){
+      setTimeout(()=>{
+        setAlartClose(true)
+      },6000)
+    }
+  },[])
+
   return (
     <section className=" w-full h-full bg-black font-[poppins]">
+      
+      {/* Alart Message after 6sec */}
+      <div className={alartClose ? "w-full h-screen z-[99999] fixed flex justify-center items-center"
+      : "hidden"}>
+        <div className="bg-black bg-opacity-80 w-full h-screen flex justify-center items-center relative">
+          <h1 className="text-white lg:text-2xl sm:text-lg font-semibold">
+            Please SignIn/SignUp First
+          </h1>
+        </div>
+        <AiOutlineClose onClick={()=>setAlartClose(false)}
+         className="absolute top-10 right-10 text-white text-2xl cursor-pointer hover:text-green" />
+      </div>
+
       <div className="">
         {/* Hero section text */}
         <div className=" lg:flex-row md:flex-col sm:flex-col flex lg:justify-between relative sm:px-[20px] lg:px-[70px] ">
