@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { HiShoppingBag } from 'react-icons/hi'
 import  './FoodCart.css';
@@ -8,22 +7,17 @@ import { actionType } from '../../Context/Reducer';
 
 export const FoodCart = ({flag, data, listRef} ) => {
 
-  const [foodItems, setfoodItems] = useState([]);
-
   const [{cartItems}, dispatch] = useStateValue();
 
-  const addToCart = ()=>{
-    dispatch({
+  const  addToCart = async (items)=>{
+    localStorage.setItem("cartItems", JSON.stringify(items));
+    await dispatch({
       type: actionType.SET_CART_ITEMS,
-      cartItems: foodItems
+      cartItems: items
     });
+    
   };
 
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-  useEffect(()=>{
-    addToCart()
-  },[foodItems]);
   return (
     
     <div ref={listRef} className={`sm:px-[20px] lg:px-[70px] lg:py-10  w-full flex transition-all duration-500 lg:gap-10 sm:gap-4 ${flag 
@@ -39,7 +33,7 @@ export const FoodCart = ({flag, data, listRef} ) => {
             </div>
             <div className="flex flex-col text-right">
                 
-                  <HiShoppingBag  onClick={()=> setfoodItems([ ...cartItems, items])}
+                  <HiShoppingBag  onClick={()=>  addToCart( [ ...cartItems, items])}
                   className=" absolute bg-green w-10 h-10 p-2 rounded-full 
                   text-white cursor-pointer top-6 right-4 hover:bg-opacity-70"/>
                 

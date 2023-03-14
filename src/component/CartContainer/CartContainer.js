@@ -22,6 +22,16 @@ export const CartContainer = () => {
     });
   };
 
+  //localstorangClear function
+
+  const localstorangClear = ()=>{
+    localStorage.removeItem(cartItems)
+  }
+
+  const [mainPrice, setMainPrice] = useState(1)
+
+  const price = cartItems.map((i)=>(i.price))
+  const subTotal = parseFloat(price);
   return (
     <motion.section
       initial={{ opacity: 0, x: 300 }}
@@ -35,6 +45,7 @@ export const CartContainer = () => {
             <IoIosArrowRoundBack className="text-white text-3xl cursor-pointer" />
           </motion.div>
           <motion.p
+          onClick={()=>localstorangClear()}
             whileTap={{ scale: 0.8 }}
             className="text-gray px-3 py-1 rounded-lg bg-dark cursor-pointer"
           >
@@ -93,7 +104,7 @@ export const CartContainer = () => {
         <div className="py-10 px-6">
           <div className="flex justify-between mb-6">
             <p className="text-gray font-semibold">Sub Total</p>
-            <p className="text-green font-semibold">15$</p>
+            <p className="text-green font-semibold">{subTotal}</p>
           </div>
           <div className="flex justify-between">
             <p className="text-gray font-semibold">Delivery</p>

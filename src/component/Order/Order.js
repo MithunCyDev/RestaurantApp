@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { ThreeDots } from "react-loader-spinner";
 import { useStateValue } from "../../Context/StateProvider";
 import Spiner2 from "../../Spiner/Spiner2";
 import { FoodCart } from "../MenuSection/FoodCart";
 import  { Footer }from '../Footer/Footer'
 
 export const Order = ({flag, data, listRef} ) => {
-  const [{cartItems}, dispatch] = useStateValue();
 
   // Loader Animation
   const [loading, setLoading] = useState(false);
