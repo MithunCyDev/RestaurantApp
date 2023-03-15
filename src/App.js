@@ -10,12 +10,15 @@ import { useStateValue } from "./Context/StateProvider";
 import { getAllFoodItems } from "./Utils/FirebaseFunction";
 import { NotFound } from "./component/NotFound/NotFound";
 import { About } from "./component/About/About";
-import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
+import {
+  OrderProtectedRoute,
+  ProtectedRoute,
+} from "./ProtectedRoute/ProtectedRoute";
 import { Contact } from "./component/Contact/Contact";
-import PuffLoader from "react-spinners/PuffLoader";
+import { AlartLogin } from "./component/AlartLogin/AlartLogin";
 
 function App() {
-  const [{ foodItems, user }, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
   //fetch data from firebase database
   const fetchData = async () => {
     await getAllFoodItems().then((data) => {
@@ -33,6 +36,10 @@ function App() {
   return (
     <>
       <Header></Header>
+
+      {/* Login Alert Componant */}
+      <AlartLogin />
+
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route path="/home" element={<Hero />} />
@@ -46,7 +53,16 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/order" element={<Order></Order>} />
+
+        <Route
+          path="/order"
+          element={
+            <OrderProtectedRoute user={user} >
+              <Order />
+            </OrderProtectedRoute>
+          }
+        />
+
         <Route path="/notFound" element={<NotFound />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
