@@ -44,7 +44,7 @@ export const AlartLogin = () => {
         alartClose
           ? "w-full h-screen z-[99999] fixed flex justify-center items-center"
           : "hidden"}>
-      <div className="bg-black bg-opacity-90 w-full h-screen flex flex-col gap-4 justify-center items-center relative">
+      <div className="backdrop-blur-lg bg-opacity-90 w-full h-screen flex flex-col gap-4 justify-center items-center relative">
         <h1 className="text-white lg:text-xl sm:text-md font-semibold">
           Please SignIn/SignUp First
         </h1>

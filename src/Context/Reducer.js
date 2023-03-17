@@ -3,6 +3,7 @@ export const actionType = {
     SET_FOOD_ITEMS: "SET_FOOD_ITEMS",
     SET_FOOD_CART: "SET_FOOD_CART",
     SET_CART_ITEMS: "SET_CART_ITEMS",
+    SET_TOTAL_PRICE: "SET_TOTAL_PRICE",
 }
 
 const Reducer = (state, action) =>{
@@ -30,6 +31,12 @@ const Reducer = (state, action) =>{
             return {
                 ...state,
                 cartItems: action.cartItems,
+            };
+            
+            case actionType.SET_TOTAL_PRICE:
+            return {
+                ...state,
+                totalPrice: action.totalPrice,
             };
             
             default:

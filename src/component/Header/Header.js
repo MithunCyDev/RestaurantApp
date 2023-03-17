@@ -6,13 +6,13 @@ import { FaUserCircle } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { IoIosAdd, IoIosLogOut } from "react-icons/io";
 import { motion } from "framer-motion";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { app } from "../../firebase.config";
 import { actionType } from "../../Context/Reducer";
 import { useStateValue } from "../../Context/StateProvider";
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { CartContainer } from "../CartContainer/CartContainer";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { app } from "../../firebase.config";
 
 export const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -35,16 +35,19 @@ export const Header = () => {
   const login = async () => {
     if (!user) {
       const {
-         user: { providerData },} = await signInWithPopup(firebaseAuth, provider);
+        user: { providerData },
+      } = await signInWithPopup(firebaseAuth, provider);
       dispatch({
         type: actionType.SET_USER,
         user: providerData[0],
       });
       localStorage.setItem("user", JSON.stringify(providerData[0]));
-    } else {
-      setMenu(!Menu);
+    }else{
+      setMenu(!Menu)
     }
   };
+
+ 
   // LogOut Function
   const logOut = () => {
     setMenu(false);
@@ -219,21 +222,24 @@ export const Header = () => {
 
         {/* User and Login section */}
         <div onClick={() => setMobileMenu(false)}>
-          <div className="w-24 ml-12" onClick={login}>
+          <div className="w-24 ml-12" onClick={login} >
             {user ? (
               <motion.img
+                
                 whileTap={{ scale: 0.7 }}
                 className="relative w-[35px] h-[35px] ml-12 cursor-pointer rounded-full"
                 src={user.photoURL}
                 alt="profile"
               />
             ) : (
+              
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 className="lg:py-2 lg:px-6 sm:py-1 sm:px-3 sm:ml-3 bg-green text-white font-medium rounded-md"
               >
                 SignIn
               </motion.button>
+              
             )}
 
             {Menu && (
@@ -257,7 +263,7 @@ export const Header = () => {
                   </Link>
                 )}
                 {/* User and Admin Name display */}
-                <p className="py-2 flex items-center text-green pl-4 font-medium bg-black text-lg">
+                <div className="py-2 flex items-center text-green pl-4 font-medium bg-black text-lg">
                   <FaUserCircle />
                   {user.email === "rajcy1@gmail.com" ? (
                     <p className="text-sm ml-1">
@@ -271,12 +277,12 @@ export const Header = () => {
                       {user.displayName}
                     </p>
                   )}
-                </p>
+                </div>
                 {/* Display User Email  */}
-                <p className="flex items-center bg-black pl-4 py-2 border-t border-dark text-gray text-[13px]">
+                <h1 className="flex items-center bg-black pl-4 py-2 border-t border-dark text-gray text-[13px]">
                   <MdEmail className="text-gray text-lg mr-1" />
                   {user.email}
-                </p>
+                </h1>
 
                 {/* Sign Out Section */}
                 <div>

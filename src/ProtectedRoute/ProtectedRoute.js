@@ -12,8 +12,7 @@ export const ProtectedRoute = ({children, user})=>{
 export const OrderProtectedRoute = ({children, user})=>{
     if(!user){
         alert("You Should Login First")
-       return <Navigate to='/home' replace />
-       
+       return <Navigate to='/home' replace /> 
     }
     else return children;
 

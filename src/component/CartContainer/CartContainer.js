@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   IoIosArrowRoundBack,
   IoIosArrowUp,
@@ -13,10 +13,30 @@ import emptyCart from "../../Image/emptyCart.png";
 export const CartContainer = () => {
   const [CartDown, setCartDown] = useState(true);
 
-  const [{ foodCart, cartItems }, dispatch] = useStateValue();
+  const [{ foodCart, cartItems, totalPrice }, dispatch] = useStateValue();
+
+  const [ itemQty, setItemQty] = useState(1)
+
+  const countQty = ()=>{
+    setItemQty(itemQty + 1 )
+  }
+
+ //Count Total Price
+ useEffect(() => {
+  const price = cartItems.reduce(
+    (total, item) => total + parseFloat(item.price),
+    0
+  );
+  dispatch({
+    type: actionType.SET_TOTAL_PRICE,
+    totalPrice: price 
+  })
+ 
+}, []);
+
 
   //Show cart Function
-  const showCart = () => {
+  const showCart =  () => {
     dispatch({
       type: actionType.SET_FOOD_CART,
       foodCart: !foodCart,
@@ -30,6 +50,7 @@ export const CartContainer = () => {
       type: actionType.SET_CART_ITEMS,
       cartItems: [], // after Click i will pass empty array
     });
+    
   };
 
   return (
@@ -82,17 +103,24 @@ export const CartContainer = () => {
                         {items.price}
                       </p>
                     </div>
+
+                    {/* Quantity Button */}
                     <div className="flex items-center gap-3 px-4">
-                      <motion.div whileTap={{ scale: 0.7 }}>
+                      <motion.div 
+                      onClick={()=> setItemQty(itemQty + 1)}
+                      whileTap={{ scale: 0.7 }}>
                         <AiOutlinePlus className="text-white text-sm cursor-pointer" />
                       </motion.div>
                       <p className="text-white text-lg font-semibold">
-                        {items.qty}
+                        {itemQty}
                       </p>
-                      <motion.div whileTap={{ scale: 0.7 }}>
+                      <motion.div 
+                      onClick={()=> setItemQty(itemQty > 1 ? itemQty - 1 : itemQty )}
+                      whileTap={{ scale: 0.7 }}>
                         <AiOutlineMinus className="text-white text-sm cursor-pointer" />
                       </motion.div>
                     </div>
+
                   </div>
                 ))}
             </div>
@@ -114,16 +142,16 @@ export const CartContainer = () => {
             <div className="py-10 px-6">
               <div className="flex justify-between mb-6">
                 <p className="text-gray font-semibold">Sub Total</p>
-                <p className="text-green font-semibold">25$</p>
+                <p className="text-green font-semibold">${totalPrice}.00</p>
               </div>
               <div className="flex justify-between">
                 <p className="text-gray font-semibold">Delivery</p>
-                <p className="text-green font-semibold">2.5$</p>
+                <p className="text-green font-semibold">$10.00</p>
               </div>
               <div className="border-b border-gray opacity-30 mt-8"></div>
               <div className="flex justify-between mt-8">
                 <p className="text-white font-semibold">Total</p>
-                <p className="text-green font-semibold">17.5$</p>
+                <p className="text-green font-semibold">${totalPrice + 10}.00</p>
               </div>
               <motion.button
                 whileTap={{ scale: 0.9 }}
