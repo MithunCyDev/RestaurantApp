@@ -34,8 +34,7 @@ export const CartContainer = () => {
  
 }, []);
 
-
-  //Show cart Function
+  //Show cartContainer true false Function
   const showCart =  () => {
     dispatch({
       type: actionType.SET_FOOD_CART,
@@ -43,14 +42,13 @@ export const CartContainer = () => {
     });
   };
 
-  //localStorageClear function
+  
   const localstorageClear = () => {
-    localStorage.removeItem("cartItems");
+    localStorage.removeItem("cartItems"); //localStorageClear function
     dispatch({
       type: actionType.SET_CART_ITEMS,
-      cartItems: [], // after Click i will pass empty array
+      cartItems: [], // after Click i will pass empty array so cartItem will be remove
     });
-    
   };
 
   return (

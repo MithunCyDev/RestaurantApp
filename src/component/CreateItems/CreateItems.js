@@ -25,7 +25,7 @@ export const CreateItems = () => {
   const [price, setPrice] = useState("");
   const [imageAsset, setImageAsset] = useState(null);
   const [category, setCategory] = useState(null);
-  const [{ foodItems }, dispatch] = useStateValue();
+  const [dispatch] = useStateValue();
 
   const uploadImage = (e) => {
     setLoading(true);

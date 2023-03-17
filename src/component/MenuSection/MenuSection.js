@@ -9,7 +9,7 @@ import { FoodDelivery } from "../FoodDelivery/FoodDelivery";
 export const MenuSection = () => {
   const [move, setMove] = useState(false);
   const [slideNumber, setSlideNumber] = useState(0);
-  const [{ foodItems }, dispatch] = useStateValue();
+  const [{ foodItems }] = useStateValue();
   const listRef = useRef();
 
   // Slider Function

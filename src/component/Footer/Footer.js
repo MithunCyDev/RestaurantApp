@@ -2,7 +2,7 @@ import React from 'react'
 import logo from '../../Image/CyFood.png'
 import {AiFillTwitterCircle, AiFillInstagram} from 'react-icons/ai'
 import {BsFacebook} from 'react-icons/bs'
-import {IoLogoLinkedin, IoMdCall} from 'react-icons/io'
+import {IoLogoLinkedin} from 'react-icons/io'
 import { Link } from 'react-router-dom'
 
 export const Footer = () => {

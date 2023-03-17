@@ -5,7 +5,7 @@ import { useStateValue } from "../../Context/StateProvider";
 import { FoodCart } from "./FoodCart";
 
 export const Menu = () => {
-  const [{ foodItems }, dispatch] = useStateValue();
+  const [{ foodItems }] = useStateValue();
 
   const [filter, setFilter] = useState("Chicken");
 

@@ -1,4 +1,4 @@
-import {collection, doc, getDoc, getDocs, orderBy, query, setDoc} from 'firebase/firestore';
+import {collection, doc, getDocs, orderBy, query, setDoc} from 'firebase/firestore';
 import { firestore, } from '../firebase.config';
 
 //saving new Item
