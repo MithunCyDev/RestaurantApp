@@ -16,22 +16,58 @@ export const CartContainer = () => {
   const [{ foodCart, cartItems, totalPrice }, dispatch] = useStateValue();
 
   const [ itemQty, setItemQty] = useState(1)
+  const [ items, setItems] = useState([])
 
-  const countQty = ()=>{
-    setItemQty(itemQty + 1 )
+  
+  const cartDispatch = ()=>{    
+      localStorage.setItem("cartItems", JSON.stringify(items));
+      dispatch({
+        type: actionType.SET_CART_ITEMS,
+        cartItems: items 
+      });
+  }
+/** cartItems Qty check or Update */
+  const upDateQty = (action, id)=>{
+    
+    if(action === "add"){
+      cartItems.map(item => {
+        /**If cartItems id and Cart Id will 
+         * be match the Quantity will be Add */
+        if( item.id === id){
+           // item qty add
+          setItemQty(item.qty += 1)
+        }
+      });   
+    } 
+    if(action === "remove"){
+      cartItems.map(item => {
+        /**If cartItems id and Cart Id will 
+         * be match the Quantity will be Remove */
+        if( item.id === id){
+          // item qty remove
+          setItemQty(item.qty > 1 ? item.qty -= 1 : item.qty) 
+        }
+      });   
+    } 
+    /** Call cartDispatch Function for 
+     * dispatch the item and set in the localStorage */
+    cartDispatch()
   }
 
- //Count Total Price
+   /** CartItems set is the Items[], 
+    * When itemQty will be change the Items[] will be updated */
+  useEffect(()=>{
+    setItems(cartItems) 
+  },[itemQty])
+  
+ /**Count Total Price with reduce */
  useEffect(() => {
-  const price = cartItems.reduce(
-    (total, item) => total + parseFloat(item.price),
-    0
-  );
+  const price = cartItems.reduce((total, item) => total + parseFloat(item.price),0);
+   /**Dispatch the total price in the Total Price */
   dispatch({
     type: actionType.SET_TOTAL_PRICE,
     totalPrice: price 
   })
- 
 }, []);
 
   //Show cartContainer true false Function
@@ -44,10 +80,13 @@ export const CartContainer = () => {
 
   
   const localstorageClear = () => {
-    localStorage.removeItem("cartItems"); //localStorageClear function
+    //localStorageClear function
+    localStorage.removeItem("cartItems"); 
+    //Dispatch in the State Provider
     dispatch({
       type: actionType.SET_CART_ITEMS,
-      cartItems: [], // after Click i will pass empty array so cartItem will be remove
+      // after Click i will pass empty array so cartItem will be remove
+      cartItems: [], 
     });
   };
 
@@ -63,6 +102,7 @@ export const CartContainer = () => {
           <IoIosArrowRoundBack className="text-white text-3xl cursor-pointer" />
         </motion.div>
         <motion.button
+          /**LocalStorage Clear */
           onClick={() => localstorageClear()}
           whileTap={{ scale: 0.8 }}
           className="text-gray px-3 py-1 rounded-lg bg-dark cursor-pointer"
@@ -70,7 +110,7 @@ export const CartContainer = () => {
           Clear
         </motion.button>
       </div>
-
+    
       {cartItems.length > 0 ? (
         <div>
           <div className="pb-4 px-6">
@@ -98,24 +138,28 @@ export const CartContainer = () => {
                         {items.title}
                       </p>
                       <p className="text-md text-green font-semibold">
-                        {items.price}
+                        {parseFloat(items.price) * items.qty }$
                       </p>
                     </div>
 
                     {/* Quantity Button */}
                     <div className="flex items-center gap-3 px-4">
                       <motion.div 
-                      onClick={()=> setItemQty(itemQty + 1)}
-                      whileTap={{ scale: 0.7 }}>
-                        <AiOutlinePlus className="text-white text-sm cursor-pointer" />
+                        whileTap={{ scale: 0.7 }}>
+                        <AiOutlinePlus 
+                        /**Quantity Add Function Call */
+                        onClick={()=> upDateQty("add", items.id)}
+                        className="text-white text-sm cursor-pointer" />
                       </motion.div>
                       <p className="text-white text-lg font-semibold">
-                        {itemQty}
+                        {items.qty}
                       </p>
                       <motion.div 
-                      onClick={()=> setItemQty(itemQty > 1 ? itemQty - 1 : itemQty )}
-                      whileTap={{ scale: 0.7 }}>
-                        <AiOutlineMinus className="text-white text-sm cursor-pointer" />
+                        whileTap={{ scale: 0.7 }}>
+                        <AiOutlineMinus 
+                        /**Quantity Remove Function Call */
+                         onClick={()=> upDateQty("remove", items.id)}
+                        className="text-white text-sm cursor-pointer" />
                       </motion.div>
                     </div>
 
