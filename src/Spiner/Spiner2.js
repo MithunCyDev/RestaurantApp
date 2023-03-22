@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 
 const Spiner2 = () => {

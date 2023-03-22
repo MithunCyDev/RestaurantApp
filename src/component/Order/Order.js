@@ -14,11 +14,13 @@ export const Order = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    setOrderId(Math.floor(Math.random()*10000)) //set Order Id randomly
+    //set Order Id randomly
+    setOrderId(Math.floor(Date.now() / 1000000)) 
     setTimeout(() => {
       setLoading(false);
     }, 1000);
   }, []);
+  
 
   return (
     <>
@@ -69,7 +71,7 @@ export const Order = () => {
                               <div className="flex justify-start items-start flex-col space-y-2">
                                 <p className="text-sm leading-none text-gray">
                                   <span className="text-gray">Quentity: </span>{" "}
-                                  1
+                                  {item.qty}
                                 </p>
                                 <p className="text-sm leading-none text-gray">
                                   <span className="text-gray">Size: </span>{" "}
@@ -81,11 +83,11 @@ export const Order = () => {
                               <p className="text-base xl:text-lg leading-6">
                                 {item.price}
                                 <span className="text-gray line-through">
-                                  $45.00
+                                  {parseFloat(item.price) + 5}
                                 </span>
                               </p>
                               <p className="text-base xl:text-lg leading-6 text-gray">
-                                01
+                                {item.qty}
                               </p>
                               <p className="text-base xl:text-lg font-semibold leading-6 text-gray">
                                 {item.price}

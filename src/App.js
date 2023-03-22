@@ -16,6 +16,7 @@ import {
 } from "./ProtectedRoute/ProtectedRoute";
 import { Contact } from "./component/Contact/Contact";
 import { AlartLogin } from "./component/AlartLogin/AlartLogin";
+import  {Spiner } from "./Spiner/Spiner";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -42,11 +43,12 @@ function App() {
       <AlartLogin />
 
       <Routes>
-        <Route path="/" element={<Hero />} />
-        <Route path="/home" element={<Hero />} />
+        <Route path="/" element={ <Hero/>} />
+        <Route path="/home" element={<Hero/>} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         
+         {/* Protected Route CreateItems Page (Only For admin) */}
         <Route
           path="/createitems"
           element={
@@ -56,6 +58,7 @@ function App() {
           }
         />
 
+        {/* Protected Route, WithOut Login Not will be visible */}
         <Route
           path="/order"
           element={

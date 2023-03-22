@@ -26,6 +26,8 @@ export const CartContainer = () => {
         cartItems: items 
       });
   }
+
+ 
 /** cartItems Qty check or Update */
   const upDateQty = (action, id)=>{
     
@@ -53,7 +55,6 @@ export const CartContainer = () => {
      * dispatch the item and set in the localStorage */
     cartDispatch()
   }
-
    /** CartItems set is the Items[], 
     * When itemQty will be change the Items[] will be updated */
   useEffect(()=>{
@@ -62,15 +63,16 @@ export const CartContainer = () => {
   
  /**Count Total Price with reduce */
  useEffect(() => {
-  const price = cartItems.reduce((total, item) => total + parseFloat(item.price),0);
+  const price = cartItems.reduce((total, item) => total + parseFloat(item.price) * item.qty, 0);
    /**Dispatch the total price in the Total Price */
   dispatch({
     type: actionType.SET_TOTAL_PRICE,
     totalPrice: price 
   })
-}, []);
+}, [itemQty]);
 
-  //Show cartContainer true false Function
+
+  //Show cartContainer show hide Function
   const showCart =  () => {
     dispatch({
       type: actionType.SET_FOOD_CART,

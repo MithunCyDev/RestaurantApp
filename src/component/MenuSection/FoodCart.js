@@ -16,12 +16,12 @@ export const FoodCart = ({ flag, data, listRef }) => {
     });
   };
 
-  const showCart = () => {
-    dispatch({
-      type: actionType.SET_FOOD_CART,
-      foodCart: false,
-    });
-  };
+  // const showCart = () => {
+  //   dispatch({
+  //     type: actionType.SET_FOOD_CART,
+  //     foodCart: false,
+  //   });
+  // };
 
   return (
     <div
@@ -47,7 +47,7 @@ export const FoodCart = ({ flag, data, listRef }) => {
               />
             </div>
             <div
-              onClick={() => showCart()}
+              
               className="flex flex-col text-right"
             >
               <HiShoppingBag

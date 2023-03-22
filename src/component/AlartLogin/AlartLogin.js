@@ -14,7 +14,7 @@ export const AlartLogin = () => {
     if (user === undefined || null) {
       setTimeout(() => {
         setAlartClose(true);
-      }, 10000);
+      }, 15000);
     }
     if (user !== null) {
       setAlartClose(false);
