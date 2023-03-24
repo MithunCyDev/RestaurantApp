@@ -16,7 +16,7 @@ export const CartContainer = () => {
   const [{ foodCart, cartItems, totalPrice }, dispatch] = useStateValue();
 
   const [ itemQty, setItemQty] = useState(1)
-  const [ items, setItems] = useState([])
+  const [ items, setItems] = useState(cartItems)
 
   
   const cartDispatch = ()=>{    
@@ -58,10 +58,10 @@ export const CartContainer = () => {
    /** CartItems set is the Items[], 
     * When itemQty will be change the Items[] will be updated */
   useEffect(()=>{
-    setItems(cartItems) 
-  },[itemQty])
+    setItems(cartItems)
+  },[])
   
- /**Count Total Price with reduce */
+ /**Count Total Price with reduce * qty */
  useEffect(() => {
   const price = cartItems.reduce((total, item) => total + parseFloat(item.price) * item.qty, 0);
    /**Dispatch the total price in the Total Price */
