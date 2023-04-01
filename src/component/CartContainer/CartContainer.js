@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { useStateValue } from "../../Context/StateProvider";
 import { actionType } from "../../Context/Reducer";
 import emptyCart from "../../Image/emptyCart.png";
+import { Link } from "react-router-dom";
 
 export const CartContainer = () => {
   const [CartDown, setCartDown] = useState(true);
@@ -90,6 +91,12 @@ export const CartContainer = () => {
       // after Click i will pass empty array so cartItem will be remove
       cartItems: [], 
     });
+    //Food Cart Will be hide if there is no items
+    dispatch({
+      type: actionType.SET_FOOD_CART,
+      foodCart: false,
+    });
+    
   };
 
   return (
@@ -197,12 +204,14 @@ export const CartContainer = () => {
                 <p className="text-white font-semibold">Total</p>
                 <p className="text-green font-semibold">${totalPrice + 10}.00</p>
               </div>
-              <motion.button
-                whileTap={{ scale: 0.9 }}
-                className="bg-green w-full h-10 font-semibold text-white rounded-full mt-14"
-              >
-                Check Out
-              </motion.button>
+              <Link to='/productDisplay'>
+                <motion.button
+                  whileTap={{ scale: 0.9 }}
+                  className="bg-green w-full h-10 font-semibold text-white rounded-full mt-14"
+                >
+                  Check Out
+                </motion.button>
+              </Link>
             </div>
           </div>
           <div

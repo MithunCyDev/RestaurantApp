@@ -10,6 +10,6 @@ export const fetchCart = ()=>{
     const cartInfo = 
     localStorage.getItem("cartItems") !== null
     ? JSON.parse(localStorage.getItem("cartItems")) 
-    : localStorage.clear();
+    : localStorage.removeItem("cartItems");
     return cartInfo ? cartInfo : [];
 };

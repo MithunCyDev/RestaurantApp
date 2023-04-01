@@ -17,6 +17,7 @@ import {
 import { Contact } from "./component/Contact/Contact";
 import { AlartLogin } from "./component/AlartLogin/AlartLogin";
 import  {Spiner } from "./Spiner/Spiner";
+import ProductDisplay from "./Stripe/ProductDisplay";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -47,6 +48,7 @@ function App() {
         <Route path="/home" element={<Hero/>} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/productDisplay" element={<ProductDisplay />} />
         
          {/* Protected Route CreateItems Page (Only For admin) */}
         <Route
