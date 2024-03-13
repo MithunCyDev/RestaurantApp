@@ -4,6 +4,6 @@
 
 See Live : https://resturantapp-864c1.web.app/
 
-<img src="./src/image/capture.PNG" alt="img1"/>
+<img src="./src/image/capture.png" alt="img1"/>
 
 
